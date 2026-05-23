@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"time"
 
-	pve "github.com/client-api/pve-go"
+	pve "github.com//"
 	gws "github.com/gorilla/websocket"
 )
 
