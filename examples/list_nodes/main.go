@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"os"
 
-	pve "github.com//"
+	pve "github.com/client-api/pve-go"
 )
 
 func main() {

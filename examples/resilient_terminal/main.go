@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"time"
 
-	pve "github.com//"
+	pve "github.com/client-api/pve-go"
 )
 
 func main() {
