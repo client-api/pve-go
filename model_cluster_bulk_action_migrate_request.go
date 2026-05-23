@@ -25,9 +25,6 @@ type ClusterBulkActionMigrateRequest struct {
 	// Defines the maximum number of tasks running concurrently.
 	MaxWorkers *int32 `json:"max-workers,omitempty"`
 
-	// Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.
-	Maxworkers *int32 `json:"maxworkers,omitempty"`
-
 	// Enable live migration for VMs and restart migration for CTs.
 	Online *PveBoolean `json:"online,omitempty"`
 
@@ -52,8 +49,6 @@ func NewClusterBulkActionMigrateRequest(target string) *ClusterBulkActionMigrate
 	this := ClusterBulkActionMigrateRequest{}
 	var maxWorkers int32 = 1
 	this.MaxWorkers = &maxWorkers
-	var maxworkers int32 = 1
-	this.Maxworkers = &maxworkers
 	this.Target = target
 	return &this
 }
@@ -66,9 +61,6 @@ func NewClusterBulkActionMigrateRequestWithDefaults() *ClusterBulkActionMigrateR
 
 	var maxWorkers int32 = 1
 	this.MaxWorkers = &maxWorkers
-
-	var maxworkers int32 = 1
-	this.Maxworkers = &maxworkers
 
 
 
@@ -108,39 +100,6 @@ func (o *ClusterBulkActionMigrateRequest) HasMaxWorkers() bool {
 // SetMaxWorkers gets a reference to the given int32 and assigns it to the MaxWorkers field.
 func (o *ClusterBulkActionMigrateRequest) SetMaxWorkers(v int32) {
 	o.MaxWorkers = &v
-}
-
-
-// GetMaxworkers returns the Maxworkers field value if set, zero value otherwise.
-func (o *ClusterBulkActionMigrateRequest) GetMaxworkers() int32 {
-	if o == nil || IsNil(o.Maxworkers) {
-		var ret int32
-		return ret
-	}
-	return *o.Maxworkers
-}
-
-// GetMaxworkersOk returns a tuple with the Maxworkers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterBulkActionMigrateRequest) GetMaxworkersOk() (*int32, bool) {
-	if o == nil || IsNil(o.Maxworkers) {
-		return nil, false
-	}
-	return o.Maxworkers, true
-}
-
-// HasMaxworkers returns a boolean if a field has been set.
-func (o *ClusterBulkActionMigrateRequest) HasMaxworkers() bool {
-	if o != nil && !IsNil(o.Maxworkers) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxworkers gets a reference to the given int32 and assigns it to the Maxworkers field.
-func (o *ClusterBulkActionMigrateRequest) SetMaxworkers(v int32) {
-	o.Maxworkers = &v
 }
 
 
@@ -281,10 +240,6 @@ func (o ClusterBulkActionMigrateRequest) ToMap() (map[string]interface{}, error)
 	
 	if !IsNil(o.MaxWorkers) {
 		toSerialize["max-workers"] = o.MaxWorkers
-	}
-	
-	if !IsNil(o.Maxworkers) {
-		toSerialize["maxworkers"] = o.Maxworkers
 	}
 	
 	if !IsNil(o.Online) {

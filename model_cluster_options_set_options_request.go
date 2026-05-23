@@ -68,9 +68,6 @@ type ClusterOptionsSetOptionsRequest struct {
 	// For cluster wide migration settings.
 	Migration *PveMigrationField `json:"migration,omitempty"`
 
-	// Migration is secure using SSH tunnel by default. For secure private networks you can disable it to speed up migration. Deprecated, use the 'migration' property instead!
-	MigrationUnsecure *PveBoolean `json:"migration_unsecure,omitempty"`
-
 	// Control the range for the free VMID auto-selection pool.
 	NextId *PveNextIdField `json:"next-id,omitempty"`
 
@@ -133,7 +130,6 @@ func NewClusterOptionsSetOptionsRequestWithDefaults() *ClusterOptionsSetOptionsR
 
 	var macPrefix string = "BC:24:11"
 	this.MacPrefix = &macPrefix
-
 
 
 
@@ -677,39 +673,6 @@ func (o *ClusterOptionsSetOptionsRequest) SetMigration(v PveMigrationField) {
 }
 
 
-// GetMigrationUnsecure returns the MigrationUnsecure field value if set, zero value otherwise.
-func (o *ClusterOptionsSetOptionsRequest) GetMigrationUnsecure() PveBoolean {
-	if o == nil || IsNil(o.MigrationUnsecure) {
-		var ret PveBoolean
-		return ret
-	}
-	return *o.MigrationUnsecure
-}
-
-// GetMigrationUnsecureOk returns a tuple with the MigrationUnsecure field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterOptionsSetOptionsRequest) GetMigrationUnsecureOk() (*PveBoolean, bool) {
-	if o == nil || IsNil(o.MigrationUnsecure) {
-		return nil, false
-	}
-	return o.MigrationUnsecure, true
-}
-
-// HasMigrationUnsecure returns a boolean if a field has been set.
-func (o *ClusterOptionsSetOptionsRequest) HasMigrationUnsecure() bool {
-	if o != nil && !IsNil(o.MigrationUnsecure) {
-		return true
-	}
-
-	return false
-}
-
-// SetMigrationUnsecure gets a reference to the given PveBoolean and assigns it to the MigrationUnsecure field.
-func (o *ClusterOptionsSetOptionsRequest) SetMigrationUnsecure(v PveBoolean) {
-	o.MigrationUnsecure = &v
-}
-
-
 // GetNextId returns the NextId field value if set, zero value otherwise.
 func (o *ClusterOptionsSetOptionsRequest) GetNextId() PveNextIdField {
 	if o == nil || IsNil(o.NextId) {
@@ -1047,10 +1010,6 @@ func (o ClusterOptionsSetOptionsRequest) ToMap() (map[string]interface{}, error)
 	
 	if !IsNil(o.Migration) {
 		toSerialize["migration"] = o.Migration
-	}
-	
-	if !IsNil(o.MigrationUnsecure) {
-		toSerialize["migration_unsecure"] = o.MigrationUnsecure
 	}
 	
 	if !IsNil(o.NextId) {

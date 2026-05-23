@@ -23,9 +23,6 @@ type ClusterBulkActionSuspendRequest struct {
 	// Defines the maximum number of tasks running concurrently.
 	MaxWorkers *int32 `json:"max-workers,omitempty"`
 
-	// Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.
-	Maxworkers *int32 `json:"maxworkers,omitempty"`
-
 	// The storage for the VM state.
 	Statestorage *string `json:"statestorage,omitempty" validate:"regexp=^[a-z][a-z0-9\\\\-_.]*[a-z0-9]$"`
 
@@ -45,8 +42,6 @@ func NewClusterBulkActionSuspendRequest() *ClusterBulkActionSuspendRequest {
 	this := ClusterBulkActionSuspendRequest{}
 	var maxWorkers int32 = 4
 	this.MaxWorkers = &maxWorkers
-	var maxworkers int32 = 4
-	this.Maxworkers = &maxworkers
 	var toDisk PveBoolean = PVEBOOLEAN__0
 	this.ToDisk = &toDisk
 	return &this
@@ -60,9 +55,6 @@ func NewClusterBulkActionSuspendRequestWithDefaults() *ClusterBulkActionSuspendR
 
 	var maxWorkers int32 = 4
 	this.MaxWorkers = &maxWorkers
-
-	var maxworkers int32 = 4
-	this.Maxworkers = &maxworkers
 
 
 	var toDisk PveBoolean = PVEBOOLEAN__0
@@ -103,39 +95,6 @@ func (o *ClusterBulkActionSuspendRequest) HasMaxWorkers() bool {
 // SetMaxWorkers gets a reference to the given int32 and assigns it to the MaxWorkers field.
 func (o *ClusterBulkActionSuspendRequest) SetMaxWorkers(v int32) {
 	o.MaxWorkers = &v
-}
-
-
-// GetMaxworkers returns the Maxworkers field value if set, zero value otherwise.
-func (o *ClusterBulkActionSuspendRequest) GetMaxworkers() int32 {
-	if o == nil || IsNil(o.Maxworkers) {
-		var ret int32
-		return ret
-	}
-	return *o.Maxworkers
-}
-
-// GetMaxworkersOk returns a tuple with the Maxworkers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterBulkActionSuspendRequest) GetMaxworkersOk() (*int32, bool) {
-	if o == nil || IsNil(o.Maxworkers) {
-		return nil, false
-	}
-	return o.Maxworkers, true
-}
-
-// HasMaxworkers returns a boolean if a field has been set.
-func (o *ClusterBulkActionSuspendRequest) HasMaxworkers() bool {
-	if o != nil && !IsNil(o.Maxworkers) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxworkers gets a reference to the given int32 and assigns it to the Maxworkers field.
-func (o *ClusterBulkActionSuspendRequest) SetMaxworkers(v int32) {
-	o.Maxworkers = &v
 }
 
 
@@ -251,10 +210,6 @@ func (o ClusterBulkActionSuspendRequest) ToMap() (map[string]interface{}, error)
 	
 	if !IsNil(o.MaxWorkers) {
 		toSerialize["max-workers"] = o.MaxWorkers
-	}
-	
-	if !IsNil(o.Maxworkers) {
-		toSerialize["maxworkers"] = o.Maxworkers
 	}
 	
 	if !IsNil(o.Statestorage) {

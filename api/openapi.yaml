@@ -36134,24 +36134,15 @@ components:
       example:
         with-local-disks: ""
         max-workers: 6
-        maxworkers: 38
         online: ""
         vms:
-        - 146581383
-        - 146581383
+        - 602745657
+        - 602745657
         target: target
       properties:
         max-workers:
           default: 1
           description: Defines the maximum number of tasks running concurrently.
-          maximum: 64
-          minimum: 1
-          type: integer
-          x-pve-typetext: <integer> (1 - 64)
-        maxworkers:
-          default: 1
-          description: "Defines the maximum number of tasks running concurrently.\
-            \ Deprecated, use 'max-workers' instead."
           maximum: 64
           minimum: 1
           type: integer
@@ -36207,11 +36198,10 @@ components:
       example:
         force-stop: ""
         max-workers: 6
-        maxworkers: 38
         vms:
-        - 596213431
-        - 596213431
-        timeout: 1
+        - 146581383
+        - 146581383
+        timeout: 6
       properties:
         force-stop:
           allOf:
@@ -36223,14 +36213,6 @@ components:
         max-workers:
           default: 4
           description: Defines the maximum number of tasks running concurrently.
-          maximum: 64
-          minimum: 1
-          type: integer
-          x-pve-typetext: <integer> (1 - 64)
-        maxworkers:
-          default: 4
-          description: "Defines the maximum number of tasks running concurrently.\
-            \ Deprecated, use 'max-workers' instead."
           maximum: 64
           minimum: 1
           type: integer
@@ -36272,23 +36254,14 @@ components:
       additionalProperties: false
       example:
         max-workers: 6
-        maxworkers: 38
         vms:
-        - 596213431
-        - 596213431
-        timeout: 1
+        - 146581383
+        - 146581383
+        timeout: 6
       properties:
         max-workers:
           default: 4
           description: Defines the maximum number of tasks running concurrently.
-          maximum: 64
-          minimum: 1
-          type: integer
-          x-pve-typetext: <integer> (1 - 64)
-        maxworkers:
-          default: 4
-          description: "Defines the maximum number of tasks running concurrently.\
-            \ Deprecated, use 'max-workers' instead."
           maximum: 64
           minimum: 1
           type: integer
@@ -36330,23 +36303,14 @@ components:
       example:
         statestorage: statestorage
         max-workers: 6
-        maxworkers: 38
         to-disk: ""
         vms:
-        - 146581383
-        - 146581383
+        - 602745657
+        - 602745657
       properties:
         max-workers:
           default: 4
           description: Defines the maximum number of tasks running concurrently.
-          maximum: 64
-          minimum: 1
-          type: integer
-          x-pve-typetext: <integer> (1 - 64)
-        maxworkers:
-          default: 4
-          description: "Defines the maximum number of tasks running concurrently.\
-            \ Deprecated, use 'max-workers' instead."
           maximum: 64
           minimum: 1
           type: integer
@@ -43206,14 +43170,6 @@ components:
     ClusterOptionsSetOptionsRequest:
       additionalProperties: false
       example:
-        migration_unsecure: ""
-        description: description
-        language: ""
-        delete: delete
-        mac_prefix: BC:24:11
-        notify: ""
-        consent-text: consent-text
-        bwlimit: ""
         replication: ""
         console: ""
         http_proxy: http_proxy
@@ -43223,6 +43179,13 @@ components:
         crs: ""
         max_workers: 1
         u2f: ""
+        description: description
+        language: ""
+        delete: delete
+        mac_prefix: BC:24:11
+        notify: ""
+        consent-text: consent-text
+        bwlimit: ""
         tag-style: ""
         migration: ""
         webauthn: ""
@@ -43335,14 +43298,6 @@ components:
           allOf:
           - $ref: "#/components/schemas/PveMigrationField"
           description: For cluster wide migration settings.
-        migration_unsecure:
-          allOf:
-          - $ref: "#/components/schemas/PveBoolean"
-          description: "Migration is secure using SSH tunnel by default. For secure\
-            \ private networks you can disable it to speed up migration. Deprecated,\
-            \ use the 'migration' property instead!"
-          x-pve-boolean: true
-          x-pve-typetext: <boolean>
         next-id:
           allOf:
           - $ref: "#/components/schemas/PveNextIdField"
@@ -70364,21 +70319,12 @@ components:
       example:
         with-local-disks: ""
         max-workers: 6
-        maxworkers: 38
         vms: vms
         target: target
       properties:
         max-workers:
           description: "Maximal number of parallel migration job. If not set, uses'max_workers'\
             \ from datacenter.cfg. One of both must be set!"
-          maximum: 64
-          minimum: 1
-          type: integer
-          x-pve-typetext: <integer> (1 - 64)
-        maxworkers:
-          description: "Maximal number of parallel migration job. If not set, uses'max_workers'\
-            \ from datacenter.cfg. One of both must be set!Deprecated, use 'max-workers'\
-            \ instead."
           maximum: 64
           minimum: 1
           type: integer

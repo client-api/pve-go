@@ -25,9 +25,6 @@ type NodesMigrateallRequest struct {
 	// Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set!
 	MaxWorkers *int32 `json:"max-workers,omitempty"`
 
-	// Maximal number of parallel migration job. If not set, uses'max_workers' from datacenter.cfg. One of both must be set!Deprecated, use 'max-workers' instead.
-	Maxworkers *int32 `json:"maxworkers,omitempty"`
-
 	// Target node.
 	Target string `json:"target" validate:"regexp=^(?:[a-zA-Z0-9](?:[a-zA-Z0-9\\\\-]*[a-zA-Z0-9])?)$"`
 
@@ -56,7 +53,6 @@ func NewNodesMigrateallRequest(target string) *NodesMigrateallRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewNodesMigrateallRequestWithDefaults() *NodesMigrateallRequest {
 	this := NodesMigrateallRequest{}
-
 
 
 
@@ -96,39 +92,6 @@ func (o *NodesMigrateallRequest) HasMaxWorkers() bool {
 // SetMaxWorkers gets a reference to the given int32 and assigns it to the MaxWorkers field.
 func (o *NodesMigrateallRequest) SetMaxWorkers(v int32) {
 	o.MaxWorkers = &v
-}
-
-
-// GetMaxworkers returns the Maxworkers field value if set, zero value otherwise.
-func (o *NodesMigrateallRequest) GetMaxworkers() int32 {
-	if o == nil || IsNil(o.Maxworkers) {
-		var ret int32
-		return ret
-	}
-	return *o.Maxworkers
-}
-
-// GetMaxworkersOk returns a tuple with the Maxworkers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NodesMigrateallRequest) GetMaxworkersOk() (*int32, bool) {
-	if o == nil || IsNil(o.Maxworkers) {
-		return nil, false
-	}
-	return o.Maxworkers, true
-}
-
-// HasMaxworkers returns a boolean if a field has been set.
-func (o *NodesMigrateallRequest) HasMaxworkers() bool {
-	if o != nil && !IsNil(o.Maxworkers) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxworkers gets a reference to the given int32 and assigns it to the Maxworkers field.
-func (o *NodesMigrateallRequest) SetMaxworkers(v int32) {
-	o.Maxworkers = &v
 }
 
 
@@ -236,10 +199,6 @@ func (o NodesMigrateallRequest) ToMap() (map[string]interface{}, error) {
 	
 	if !IsNil(o.MaxWorkers) {
 		toSerialize["max-workers"] = o.MaxWorkers
-	}
-	
-	if !IsNil(o.Maxworkers) {
-		toSerialize["maxworkers"] = o.Maxworkers
 	}
 	
 	toSerialize["target"] = o.Target

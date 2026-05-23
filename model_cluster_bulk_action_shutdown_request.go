@@ -26,9 +26,6 @@ type ClusterBulkActionShutdownRequest struct {
 	// Defines the maximum number of tasks running concurrently.
 	MaxWorkers *int32 `json:"max-workers,omitempty"`
 
-	// Defines the maximum number of tasks running concurrently. Deprecated, use 'max-workers' instead.
-	Maxworkers *int32 `json:"maxworkers,omitempty"`
-
 	// Default shutdown timeout in seconds if none is configured for the guest.
 	Timeout *int64 `json:"timeout,omitempty"`
 
@@ -47,8 +44,6 @@ func NewClusterBulkActionShutdownRequest() *ClusterBulkActionShutdownRequest {
 	this.ForceStop = &forceStop
 	var maxWorkers int32 = 4
 	this.MaxWorkers = &maxWorkers
-	var maxworkers int32 = 4
-	this.Maxworkers = &maxworkers
 	var timeout int64 = 180
 	this.Timeout = &timeout
 	return &this
@@ -65,9 +60,6 @@ func NewClusterBulkActionShutdownRequestWithDefaults() *ClusterBulkActionShutdow
 
 	var maxWorkers int32 = 4
 	this.MaxWorkers = &maxWorkers
-
-	var maxworkers int32 = 4
-	this.Maxworkers = &maxworkers
 
 	var timeout int64 = 180
 	this.Timeout = &timeout
@@ -140,39 +132,6 @@ func (o *ClusterBulkActionShutdownRequest) HasMaxWorkers() bool {
 // SetMaxWorkers gets a reference to the given int32 and assigns it to the MaxWorkers field.
 func (o *ClusterBulkActionShutdownRequest) SetMaxWorkers(v int32) {
 	o.MaxWorkers = &v
-}
-
-
-// GetMaxworkers returns the Maxworkers field value if set, zero value otherwise.
-func (o *ClusterBulkActionShutdownRequest) GetMaxworkers() int32 {
-	if o == nil || IsNil(o.Maxworkers) {
-		var ret int32
-		return ret
-	}
-	return *o.Maxworkers
-}
-
-// GetMaxworkersOk returns a tuple with the Maxworkers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterBulkActionShutdownRequest) GetMaxworkersOk() (*int32, bool) {
-	if o == nil || IsNil(o.Maxworkers) {
-		return nil, false
-	}
-	return o.Maxworkers, true
-}
-
-// HasMaxworkers returns a boolean if a field has been set.
-func (o *ClusterBulkActionShutdownRequest) HasMaxworkers() bool {
-	if o != nil && !IsNil(o.Maxworkers) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxworkers gets a reference to the given int32 and assigns it to the Maxworkers field.
-func (o *ClusterBulkActionShutdownRequest) SetMaxworkers(v int32) {
-	o.Maxworkers = &v
 }
 
 
@@ -259,10 +218,6 @@ func (o ClusterBulkActionShutdownRequest) ToMap() (map[string]interface{}, error
 	
 	if !IsNil(o.MaxWorkers) {
 		toSerialize["max-workers"] = o.MaxWorkers
-	}
-	
-	if !IsNil(o.Maxworkers) {
-		toSerialize["maxworkers"] = o.Maxworkers
 	}
 	
 	if !IsNil(o.Timeout) {
