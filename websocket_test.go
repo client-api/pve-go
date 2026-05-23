@@ -5,7 +5,7 @@
 // PVE termproxy is asymmetric: client→server is framed `0:LEN:DATA`,
 // server→client is the underlying TTY output without framing. The
 // decoder is intentionally pass-through.
-package pveclient
+package openapi
 
 import (
 	"bytes"

@@ -23,7 +23,7 @@
 //   - ConsoleConnector (Template Method) — orchestrates the pipeline;
 //     concrete connectors plug in their strategies.
 //   - TerminalSession / VncSession — delegate framing to a codec.
-package pveclient
+package openapi
 
 import (
 	"context"

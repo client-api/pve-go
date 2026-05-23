@@ -4,7 +4,7 @@
 // Wraps TerminalSession / VncSession with retry-and-reconnect: on a
 // non-user-initiated close, the wrapper re-issues the ticket and
 // re-opens the WebSocket transparently.
-package pveclient
+package openapi
 
 import (
 	"context"
