@@ -33,7 +33,6 @@ func main() {
 	nodes := resp.GetData()
 	fmt.Printf("Found %d node(s):\n", len(nodes))
 	for _, n := range nodes {
-		// PVE only — Node shape carries rich stats.
 		fmt.Printf("  - %v (status=%v, cpu=%v, mem=%v/%v)\n",
 			n.Node, n.Status, n.Cpu, n.Mem, n.Maxmem)
 	}
