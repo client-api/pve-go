@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
@@ -4389,11 +4390,33 @@ type ApiNodesStorageUploadRequest struct {
 	ApiService *NodesStorageAPIService
 	node string
 	storage string
-	nodesStorageUploadRequest *NodesStorageUploadRequest
+	content *PveContentEnum
+	filename *os.File
+	checksum *string
+	checksumAlgorithm *PveChecksumAlgorithmEnum
 }
 
-func (r ApiNodesStorageUploadRequest) NodesStorageUploadRequest(nodesStorageUploadRequest NodesStorageUploadRequest) ApiNodesStorageUploadRequest {
-	r.nodesStorageUploadRequest = &nodesStorageUploadRequest
+// Content type.
+func (r ApiNodesStorageUploadRequest) Content(content PveContentEnum) ApiNodesStorageUploadRequest {
+	r.content = &content
+	return r
+}
+
+// The name of the file to create. Caution: This will be normalized!
+func (r ApiNodesStorageUploadRequest) Filename(filename *os.File) ApiNodesStorageUploadRequest {
+	r.filename = filename
+	return r
+}
+
+// The expected checksum of the file.
+func (r ApiNodesStorageUploadRequest) Checksum(checksum string) ApiNodesStorageUploadRequest {
+	r.checksum = &checksum
+	return r
+}
+
+// The algorithm to calculate the checksum of the file.
+func (r ApiNodesStorageUploadRequest) ChecksumAlgorithm(checksumAlgorithm PveChecksumAlgorithmEnum) ApiNodesStorageUploadRequest {
+	r.checksumAlgorithm = &checksumAlgorithm
 	return r
 }
 
@@ -4442,12 +4465,15 @@ func (a *NodesStorageAPIService) NodesStorageUploadExecute(r ApiNodesStorageUplo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nodesStorageUploadRequest == nil {
-		return localVarReturnValue, nil, reportError("nodesStorageUploadRequest is required and must be specified")
+	if r.content == nil {
+		return localVarReturnValue, nil, reportError("content is required and must be specified")
+	}
+	if r.filename == nil {
+		return localVarReturnValue, nil, reportError("filename is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json", "application/x-www-form-urlencoded"}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -4463,8 +4489,28 @@ func (a *NodesStorageAPIService) NodesStorageUploadExecute(r ApiNodesStorageUplo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.nodesStorageUploadRequest
+	if r.checksum != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "checksum", r.checksum, "", "")
+	}
+	if r.checksumAlgorithm != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "checksum-algorithm", r.checksumAlgorithm, "", "")
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "content", r.content, "", "")
+	var filenameLocalVarFormFileName string
+	var filenameLocalVarFileName     string
+	var filenameLocalVarFileBytes    []byte
+
+	filenameLocalVarFormFileName = "filename"
+	filenameLocalVarFile := r.filename
+
+	if filenameLocalVarFile != nil {
+		fbs, _ := io.ReadAll(filenameLocalVarFile)
+
+		filenameLocalVarFileBytes = fbs
+		filenameLocalVarFileName = filenameLocalVarFile.Name()
+		filenameLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: filenameLocalVarFileBytes, fileName: filenameLocalVarFileName, formFileName: filenameLocalVarFormFileName})
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

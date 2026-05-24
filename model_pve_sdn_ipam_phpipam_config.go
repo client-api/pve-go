@@ -22,6 +22,12 @@ var _ MappedNullable = &PveSdnIpamPhpipamConfig{}
 // PveSdnIpamPhpipamConfig struct for PveSdnIpamPhpipamConfig
 type PveSdnIpamPhpipamConfig struct {
 
+	// The SDN ipam object identifier.
+	Ipam string `json:"ipam" validate:"regexp=[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"`
+
+	// the token for unlocking the global SDN configuration
+	LockToken *string `json:"lock-token,omitempty"`
+
 	Url string `json:"url"`
 
 	Token string `json:"token"`
@@ -41,8 +47,9 @@ type _PveSdnIpamPhpipamConfig PveSdnIpamPhpipamConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveSdnIpamPhpipamConfig(url string, token string, section int64, type_ string) *PveSdnIpamPhpipamConfig {
+func NewPveSdnIpamPhpipamConfig(ipam string, url string, token string, section int64, type_ string) *PveSdnIpamPhpipamConfig {
 	this := PveSdnIpamPhpipamConfig{}
+	this.Ipam = ipam
 	this.Url = url
 	this.Token = token
 	this.Section = section
@@ -61,7 +68,67 @@ func NewPveSdnIpamPhpipamConfigWithDefaults() *PveSdnIpamPhpipamConfig {
 
 
 
+
+
 	return &this
+}
+
+
+// GetIpam returns the Ipam field value
+func (o *PveSdnIpamPhpipamConfig) GetIpam() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Ipam
+}
+
+// GetIpamOk returns a tuple with the Ipam field value
+// and a boolean to check if the value has been set.
+func (o *PveSdnIpamPhpipamConfig) GetIpamOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Ipam, true
+}
+
+// SetIpam sets field value
+func (o *PveSdnIpamPhpipamConfig) SetIpam(v string) {
+	o.Ipam = v
+}
+
+
+// GetLockToken returns the LockToken field value if set, zero value otherwise.
+func (o *PveSdnIpamPhpipamConfig) GetLockToken() string {
+	if o == nil || IsNil(o.LockToken) {
+		var ret string
+		return ret
+	}
+	return *o.LockToken
+}
+
+// GetLockTokenOk returns a tuple with the LockToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnIpamPhpipamConfig) GetLockTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.LockToken) {
+		return nil, false
+	}
+	return o.LockToken, true
+}
+
+// HasLockToken returns a boolean if a field has been set.
+func (o *PveSdnIpamPhpipamConfig) HasLockToken() bool {
+	if o != nil && !IsNil(o.LockToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockToken gets a reference to the given string and assigns it to the LockToken field.
+func (o *PveSdnIpamPhpipamConfig) SetLockToken(v string) {
+	o.LockToken = &v
 }
 
 
@@ -209,6 +276,12 @@ func (o PveSdnIpamPhpipamConfig) MarshalJSON() ([]byte, error) {
 func (o PveSdnIpamPhpipamConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	toSerialize["ipam"] = o.Ipam
+	
+	if !IsNil(o.LockToken) {
+		toSerialize["lock-token"] = o.LockToken
+	}
+	
 	toSerialize["url"] = o.Url
 	
 	toSerialize["token"] = o.Token
@@ -229,6 +302,7 @@ func (o *PveSdnIpamPhpipamConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"ipam",
 		"url",
 		"token",
 		"section",

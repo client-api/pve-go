@@ -6387,6 +6387,7 @@ paths:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         style: form
       responses:
         "200":
@@ -6433,6 +6434,7 @@ paths:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         style: form
       responses:
         "200":
@@ -7230,6 +7232,7 @@ paths:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         style: form
       responses:
         "200":
@@ -14504,6 +14507,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Offset of the first log line to return (0-based).
@@ -14516,6 +14520,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       responses:
         "200":
@@ -17363,6 +17368,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Display log since this UNIX epoch.
@@ -17375,6 +17381,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - explode: true
         in: query
@@ -17385,6 +17392,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: Display log until this UNIX epoch.
         explode: true
@@ -17396,6 +17404,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       responses:
         "200":
@@ -18052,6 +18061,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Display all log since this UNIX epoch. Conflicts with 'startcursor'.
@@ -18064,6 +18074,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: Start after the given Cursor. Conflicts with 'since'
         explode: true
@@ -18084,6 +18095,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       responses:
         "200":
@@ -19183,6 +19195,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Display log since this UNIX epoch.
@@ -19195,6 +19208,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - explode: true
         in: query
@@ -19205,6 +19219,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: Display log until this UNIX epoch.
         explode: true
@@ -19216,6 +19231,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveVmid"
       responses:
@@ -21854,6 +21870,7 @@ paths:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveVmid"
       responses:
@@ -21940,6 +21957,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveVmid"
       responses:
@@ -24011,6 +24029,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Display log since this UNIX epoch.
@@ -24023,6 +24042,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - explode: true
         in: query
@@ -24033,6 +24053,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: Display log until this UNIX epoch.
         explode: true
@@ -24044,6 +24065,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveVmid"
       responses:
@@ -26371,6 +26393,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - explode: true
@@ -26382,6 +26405,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       responses:
         "200":
@@ -29135,10 +29159,7 @@ paths:
       - $ref: "#/components/parameters/PveStorage"
       requestBody:
         content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/NodesStorageUploadRequest"
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               $ref: "#/components/schemas/NodesStorageUploadRequest"
         required: true
@@ -29401,6 +29422,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Service ID
@@ -29431,6 +29453,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: Display all log until this date-time string.
         explode: true
@@ -29504,6 +29527,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Only list tasks since this UNIX epoch.
@@ -29515,6 +29539,7 @@ paths:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         style: form
       - description: "List archived, active or all tasks."
         explode: true
@@ -29537,6 +29562,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - description: List of Task States that should be returned.
         explode: true
@@ -29567,6 +29593,7 @@ paths:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         style: form
       - description: Only list tasks from this user.
         explode: true
@@ -29725,6 +29752,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNode"
       - description: Start at this line when reading the tasklog
@@ -29738,6 +29766,7 @@ paths:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         style: form
       - $ref: "#/components/parameters/PveNodesTasksUpid"
       responses:
@@ -31078,6 +31107,7 @@ components:
         minimum: 0
         type: integer
         x-pve-typetext: <integer> (0 - N)
+        x-int64: true
       style: simple
     PveClusterFirewallName2:
       description: IP set name.
@@ -31588,6 +31618,7 @@ components:
         format: int64
         type: integer
         x-pve-typetext: <integer>
+        x-int64: true
       style: simple
     PveNodesCephName5:
       description: The name of the pool. It must be unique.
@@ -31915,6 +31946,7 @@ components:
       - 0
       - 1
       type: integer
+      x-pve-boolean: true
     PveAccessAclTypeEnum:
       enum:
       - user
@@ -32081,10 +32113,33 @@ components:
       additionalProperties: false
       example:
         default: ""
+        check-connection: ""
+        audiences: audiences
+        realm: realm
         comment: comment
         type: pam
         tfa: tfa
       properties:
+        audiences:
+          description: A list of audiences that the OpenID Issuer may include that
+            are accepted in addition to 'client-id'.
+          pattern: "^[^\\x00-\\x1F\\x7F <>#\\u0022]*$"
+          type: string
+          x-pve-pattern-original: "^[^\\x00-\\x1F\\x7F <>#\"]*$"
+        check-connection:
+          allOf:
+          - $ref: "#/components/schemas/PveBoolean"
+          default: 0
+          description: Check bind connection to the server.
+          x-pve-boolean: true
+          x-pve-typetext: <boolean>
+        realm:
+          description: Authentication domain ID
+          format: pve-realm
+          maxLength: 32
+          pattern: "^[A-Za-z][A-Za-z0-9.\\-_]+$"
+          type: string
+          x-pve-typetext: <string>
         default:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -32109,11 +32164,32 @@ components:
           - pam
           type: string
       required:
+      - realm
       - type
       x-pve-plugin-source: proxmox/pve-access-control/src/PVE/Auth/PAM.pm
     PveRealmPveConfig:
       additionalProperties: false
       properties:
+        audiences:
+          description: A list of audiences that the OpenID Issuer may include that
+            are accepted in addition to 'client-id'.
+          pattern: "^[^\\x00-\\x1F\\x7F <>#\\u0022]*$"
+          type: string
+          x-pve-pattern-original: "^[^\\x00-\\x1F\\x7F <>#\"]*$"
+        check-connection:
+          allOf:
+          - $ref: "#/components/schemas/PveBoolean"
+          default: 0
+          description: Check bind connection to the server.
+          x-pve-boolean: true
+          x-pve-typetext: <boolean>
+        realm:
+          description: Authentication domain ID
+          format: pve-realm
+          maxLength: 32
+          pattern: "^[A-Za-z][A-Za-z0-9.\\-_]+$"
+          type: string
+          x-pve-typetext: <string>
         default:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -32138,11 +32214,32 @@ components:
           - pve
           type: string
       required:
+      - realm
       - type
       x-pve-plugin-source: proxmox/pve-access-control/src/PVE/Auth/PVE.pm
     PveRealmLdapConfig:
       additionalProperties: false
       properties:
+        audiences:
+          description: A list of audiences that the OpenID Issuer may include that
+            are accepted in addition to 'client-id'.
+          pattern: "^[^\\x00-\\x1F\\x7F <>#\\u0022]*$"
+          type: string
+          x-pve-pattern-original: "^[^\\x00-\\x1F\\x7F <>#\"]*$"
+        check-connection:
+          allOf:
+          - $ref: "#/components/schemas/PveBoolean"
+          default: 0
+          description: Check bind connection to the server.
+          x-pve-boolean: true
+          x-pve-typetext: <boolean>
+        realm:
+          description: Authentication domain ID
+          format: pve-realm
+          maxLength: 32
+          pattern: "^[A-Za-z][A-Za-z0-9.\\-_]+$"
+          type: string
+          x-pve-typetext: <string>
         server1:
           description: Server IP address (or DNS name)
           format: address
@@ -32307,6 +32404,7 @@ components:
           type: string
       required:
       - base_dn
+      - realm
       - server1
       - type
       - user_attr
@@ -32314,6 +32412,26 @@ components:
     PveRealmAdConfig:
       additionalProperties: false
       properties:
+        audiences:
+          description: A list of audiences that the OpenID Issuer may include that
+            are accepted in addition to 'client-id'.
+          pattern: "^[^\\x00-\\x1F\\x7F <>#\\u0022]*$"
+          type: string
+          x-pve-pattern-original: "^[^\\x00-\\x1F\\x7F <>#\"]*$"
+        check-connection:
+          allOf:
+          - $ref: "#/components/schemas/PveBoolean"
+          default: 0
+          description: Check bind connection to the server.
+          x-pve-boolean: true
+          x-pve-typetext: <boolean>
+        realm:
+          description: Authentication domain ID
+          format: pve-realm
+          maxLength: 32
+          pattern: "^[A-Za-z][A-Za-z0-9.\\-_]+$"
+          type: string
+          x-pve-typetext: <string>
         server1:
           description: Server IP address (or DNS name)
           format: address
@@ -32483,12 +32601,33 @@ components:
           type: string
       required:
       - domain
+      - realm
       - server1
       - type
       x-pve-plugin-source: proxmox/pve-access-control/src/PVE/Auth/AD.pm
     PveRealmOpenidConfig:
       additionalProperties: false
       properties:
+        audiences:
+          description: A list of audiences that the OpenID Issuer may include that
+            are accepted in addition to 'client-id'.
+          pattern: "^[^\\x00-\\x1F\\x7F <>#\\u0022]*$"
+          type: string
+          x-pve-pattern-original: "^[^\\x00-\\x1F\\x7F <>#\"]*$"
+        check-connection:
+          allOf:
+          - $ref: "#/components/schemas/PveBoolean"
+          default: 0
+          description: Check bind connection to the server.
+          x-pve-boolean: true
+          x-pve-typetext: <boolean>
+        realm:
+          description: Authentication domain ID
+          format: pve-realm
+          maxLength: 32
+          pattern: "^[A-Za-z][A-Za-z0-9.\\-_]+$"
+          type: string
+          x-pve-typetext: <string>
         issuer-url:
           description: OpenID Issuer Url
           maxLength: 256
@@ -32577,6 +32716,7 @@ components:
       required:
       - client-id
       - issuer-url
+      - realm
       - type
       x-pve-plugin-source: proxmox/pve-access-control/src/PVE/Auth/OpenId.pm
     AccessDomainsCreateDomainsRequest:
@@ -33958,6 +34098,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         firstname:
           maxLength: 1024
           type: string
@@ -34098,6 +34239,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         firstname:
           maxLength: 1024
           type: string
@@ -34254,6 +34396,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         privsep:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -34310,6 +34453,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         privsep:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -34391,6 +34535,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         privs:
           description: "Verify ticket, and check if user have access 'privs' on 'path'"
           format: pve-priv-list
@@ -35313,6 +35458,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         comment:
           description: Description for the Job.
           maxLength: 512
@@ -35386,6 +35532,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         mailnotification:
           allOf:
           - $ref: "#/components/schemas/PveMailnotificationEnum"
@@ -35449,6 +35596,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         pool:
           description: Backup all known guest systems included in the specified pool.
           type: string
@@ -35530,6 +35678,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         storage:
           description: Store resulting file to this storage.
           format: pve-storage-id
@@ -35554,6 +35703,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
       x-pve-polymorphic:
         discriminator: mode
         note: "apidoc.js flattens per-type properties into a single property union.\
@@ -35771,6 +35921,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         comment:
           description: Description for the Job.
           maxLength: 512
@@ -35843,6 +35994,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         mailnotification:
           allOf:
           - $ref: "#/components/schemas/PveMailnotificationEnum"
@@ -35906,6 +36058,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         pool:
           description: Backup all known guest systems included in the specified pool.
           type: string
@@ -35987,6 +36140,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         storage:
           description: Store resulting file to this storage.
           format: pve-storage-id
@@ -36011,6 +36165,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
       x-pve-polymorphic:
         discriminator: mode
         note: "apidoc.js flattens per-type properties into a single property union.\
@@ -36224,6 +36379,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         vms:
           description: Only consider guests from this list of VMIDs.
           items:
@@ -36272,6 +36428,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         vms:
           description: Only consider guests from this list of VMIDs.
           items:
@@ -36824,6 +36981,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         token-coefficient:
           default: 125
           description: Coefficient used to determine Corosync's token timeout. See
@@ -36832,12 +36990,14 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         votes:
           description: Number of votes for this node.
           format: int64
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
       required:
       - clustername
       x-pve-indexed-families:
@@ -36902,6 +37062,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         total:
           description: "Optional total count, present for paginated list responses."
           type: integer
@@ -37051,6 +37212,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         password:
           description: Superuser (root) password of peer node.
           maxLength: 128
@@ -37062,6 +37224,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
       required:
       - fingerprint
       - hostname
@@ -37180,6 +37343,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         force:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -37264,12 +37428,14 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         votes:
           description: Number of votes for this node
           format: int64
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
       x-pve-indexed-families:
       - name: links
         pascalName: Links
@@ -37763,6 +37929,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         icmp-type:
           description: Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'.
           format: pve-fw-icmp-type-spec
@@ -37794,6 +37961,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         proto:
           description: "IP protocol. You can use protocol names ('tcp'/'udp') or simple\
             \ numbers, as defined in '/etc/protocols'."
@@ -37967,6 +38135,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         icmp-type:
           description: Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'.
           format: pve-fw-icmp-type-spec
@@ -37998,6 +38167,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         proto:
           description: "IP protocol. You can use protocol names ('tcp'/'udp') or simple\
             \ numbers, as defined in '/etc/protocols'."
@@ -38315,6 +38485,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         enable:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -38414,6 +38585,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         log_ratelimit:
           allOf:
           - $ref: "#/components/schemas/PveClusterFirewallLogRatelimitField"
@@ -38933,6 +39105,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         max_restart:
           default: 1
           description: "Maximal number of tries to restart the resource on a node\
@@ -38942,6 +39115,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         sid:
           description: "HA resource ID. This consists of a resource type followed\
             \ by a resource specific name, separated with colon (example: vm:100 /\
@@ -39118,6 +39292,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         max_restart:
           default: 1
           description: "Maximal number of tries to restart the resource on a node\
@@ -39127,6 +39302,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         state:
           allOf:
           - $ref: "#/components/schemas/PveStateEnum"
@@ -40771,6 +40947,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         mtu:
           default: 1500
           description: MTU for metrics transmission over UDP
@@ -40800,6 +40977,7 @@ components:
           minimum: 1024
           type: integer
           x-pve-typetext: <integer> (1024 - N)
+          x-int64: true
         otel-path:
           default: /v1/metrics
           description: OTLP endpoint path
@@ -40860,6 +41038,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         token:
           description: "The InfluxDB access token. Only necessary when using the http\
             \ v2 api. If the v2 compatibility api is used, use 'user:password' instead."
@@ -40973,6 +41152,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         mtu:
           default: 1500
           description: MTU for metrics transmission over UDP
@@ -41002,6 +41182,7 @@ components:
           minimum: 1024
           type: integer
           x-pve-typetext: <integer> (1024 - N)
+          x-int64: true
         otel-path:
           default: /v1/metrics
           description: OTLP endpoint path
@@ -41062,6 +41243,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         token:
           description: "The InfluxDB access token. Only necessary when using the http\
             \ v2 api. If the v2 compatibility api is used, use 'user:password' instead."
@@ -41102,6 +41284,7 @@ components:
         data:
           format: int64
           type: integer
+          x-int64: true
         total:
           description: "Optional total count, present for paginated list responses."
           type: integer
@@ -41735,6 +41918,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         server:
           description: The address of the SMTP server.
           type: string
@@ -41906,6 +42090,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         server:
           description: The address of the SMTP server.
           type: string
@@ -42934,11 +43119,13 @@ components:
           description: "Lower, inclusive boundary for free next-id API range."
           format: int64
           type: integer
+          x-int64: true
         upper:
           default: 1000000
           description: "Upper, exclusive boundary for free next-id API range."
           format: int64
           type: integer
+          x-int64: true
       x-pve-compound: true
     PveNextIdField:
       oneOf:
@@ -43294,6 +43481,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         migration:
           allOf:
           - $ref: "#/components/schemas/PveMigrationField"
@@ -44359,11 +44547,59 @@ components:
     PveSdnControllerEvpnConfig:
       additionalProperties: false
       example:
+        lock-token: lock-token
+        controller: controller
+        nodes: nodes
+        bgp-mode: ""
         fabric: fabric
+        route-map-out: route-map-out
+        route-map-in: route-map-in
         peers: peers
+        peer-group-name: VTEP
         type: evpn
         asn: 343953088
       properties:
+        bgp-mode:
+          allOf:
+          - $ref: "#/components/schemas/PveBgpModeEnum"
+          default: auto
+          description: Whether to use eBGP or iBGP. Auto mode chooses depending on
+            BGP controller or falls back to iBGP.
+        controller:
+          description: The SDN controller object identifier.
+          maxLength: 64
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        nodes:
+          description: List of cluster node names.
+          format: pve-node-list
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        peer-group-name:
+          default: VTEP
+          description: Name of the peer group for this EVPN controller
+          format: pve-configid
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+          type: string
+          x-pve-typetext: <string>
+        route-map-in:
+          description: Route Map that should be applied for incoming routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        route-map-out:
+          description: Route Map that should be applied for outgoing routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
         asn:
           description: autonomous system number
           maximum: 4294967295
@@ -44388,11 +44624,53 @@ components:
           type: string
       required:
       - asn
+      - controller
       - type
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Controllers/EvpnPlugin.pm
     PveSdnControllerBgpConfig:
       additionalProperties: false
       properties:
+        bgp-mode:
+          allOf:
+          - $ref: "#/components/schemas/PveBgpModeEnum"
+          default: auto
+          description: Whether to use eBGP or iBGP. Auto mode chooses depending on
+            BGP controller or falls back to iBGP.
+        controller:
+          description: The SDN controller object identifier.
+          maxLength: 64
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        nodes:
+          description: List of cluster node names.
+          format: pve-node-list
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        peer-group-name:
+          default: VTEP
+          description: Name of the peer group for this EVPN controller
+          format: pve-configid
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+          type: string
+          x-pve-typetext: <string>
+        route-map-in:
+          description: Route Map that should be applied for incoming routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        route-map-out:
+          description: Route Map that should be applied for outgoing routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
         node:
           description: The cluster node name.
           format: pve-node
@@ -44428,6 +44706,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         loopback:
           description: Name of the loopback/dummy interface that provides the Router-IP.
           type: string
@@ -44438,6 +44717,7 @@ components:
           type: string
       required:
       - asn
+      - controller
       - node
       - peers
       - type
@@ -44445,6 +44725,47 @@ components:
     PveSdnControllerIsisConfig:
       additionalProperties: false
       properties:
+        bgp-mode:
+          allOf:
+          - $ref: "#/components/schemas/PveBgpModeEnum"
+          default: auto
+          description: Whether to use eBGP or iBGP. Auto mode chooses depending on
+            BGP controller or falls back to iBGP.
+        controller:
+          description: The SDN controller object identifier.
+          maxLength: 64
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        nodes:
+          description: List of cluster node names.
+          format: pve-node-list
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        peer-group-name:
+          default: VTEP
+          description: Name of the peer group for this EVPN controller
+          format: pve-configid
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+          type: string
+          x-pve-typetext: <string>
+        route-map-in:
+          description: Route Map that should be applied for incoming routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        route-map-out:
+          description: Route Map that should be applied for outgoing routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
         isis-domain:
           description: Name of the IS-IS domain.
           type: string
@@ -44478,6 +44799,7 @@ components:
           - isis
           type: string
       required:
+      - controller
       - isis-domain
       - isis-ifaces
       - isis-net
@@ -44487,11 +44809,53 @@ components:
     PveSdnControllerFaucetConfig:
       additionalProperties: false
       properties:
+        bgp-mode:
+          allOf:
+          - $ref: "#/components/schemas/PveBgpModeEnum"
+          default: auto
+          description: Whether to use eBGP or iBGP. Auto mode chooses depending on
+            BGP controller or falls back to iBGP.
+        controller:
+          description: The SDN controller object identifier.
+          maxLength: 64
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        nodes:
+          description: List of cluster node names.
+          format: pve-node-list
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        peer-group-name:
+          default: VTEP
+          description: Name of the peer group for this EVPN controller
+          format: pve-configid
+          pattern: "^[A-Za-z][A-Za-z0-9_]*$"
+          type: string
+          x-pve-typetext: <string>
+        route-map-in:
+          description: Route Map that should be applied for incoming routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
+        route-map-out:
+          description: Route Map that should be applied for outgoing routes
+          format: pve-sdn-route-map-id
+          type: string
+          x-pve-format-unknown: true
+          x-pve-typetext: <string>
         type:
           enum:
           - faucet
           type: string
       required:
+      - controller
       - type
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Controllers/FaucetPlugin.pm
     ClusterSdnCreateControllersRequest:
@@ -44625,6 +44989,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         fabric:
           description: SDN fabric to use as underlay for this EVPN controller.
           format: pve-sdn-fabric-id
@@ -44773,14 +45138,17 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         reversev6mask:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         ttl:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         type:
           allOf:
           - $ref: "#/components/schemas/PveClusterSdnTypeTypeEnum"
@@ -44884,10 +45252,12 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         ttl:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         url:
           type: string
           x-pve-typetext: <string>
@@ -45845,18 +46215,39 @@ components:
     PveSdnIpamPveConfig:
       additionalProperties: false
       example:
+        lock-token: lock-token
+        ipam: ipam
         type: pve
       properties:
+        ipam:
+          description: The SDN ipam object identifier.
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
         type:
           enum:
           - pve
           type: string
       required:
+      - ipam
       - type
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Ipams/PVEPlugin.pm
     PveSdnIpamNetboxConfig:
       additionalProperties: false
       properties:
+        ipam:
+          description: The SDN ipam object identifier.
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
         url:
           type: string
           x-pve-typetext: <string>
@@ -45872,6 +46263,7 @@ components:
           - netbox
           type: string
       required:
+      - ipam
       - token
       - type
       - url
@@ -45879,6 +46271,15 @@ components:
     PveSdnIpamPhpipamConfig:
       additionalProperties: false
       properties:
+        ipam:
+          description: The SDN ipam object identifier.
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
         url:
           type: string
           x-pve-typetext: <string>
@@ -45889,6 +46290,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         fingerprint:
           description: Certificate SHA 256 fingerprint.
           pattern: "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}"
@@ -45898,6 +46300,7 @@ components:
           - phpipam
           type: string
       required:
+      - ipam
       - section
       - token
       - type
@@ -46004,6 +46407,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         token:
           type: string
           x-pve-typetext: <string>
@@ -47874,15 +48278,39 @@ components:
     PveSdnZoneSimpleConfig:
       additionalProperties: false
       example:
+        lock-token: lock-token
         ipam: ipam
         nodes: nodes
+        secondary-controllers:
+        - secondary-controllers
+        - secondary-controllers
         dnszone: dnszone
+        zone: zone
         reversedns: reversedns
         dns: dns
         type: simple
         dhcp: ""
         mtu: 0
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -47894,6 +48322,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         dns:
           description: dns api server
           type: string
@@ -47923,10 +48352,30 @@ components:
           type: string
       required:
       - type
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/SimplePlugin.pm
     PveSdnZoneVlanConfig:
       additionalProperties: false
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -47948,6 +48397,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         dns:
           description: dns api server
           type: string
@@ -47974,10 +48424,30 @@ components:
       required:
       - bridge
       - type
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/VlanPlugin.pm
     PveSdnZoneQinqConfig:
       additionalProperties: false
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -47990,6 +48460,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         bridge:
           description: The bridge for which VLANs should be managed.
           type: string
@@ -48005,6 +48476,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         vlan-protocol:
           allOf:
           - $ref: "#/components/schemas/PveVlanProtocolEnum"
@@ -48038,10 +48510,30 @@ components:
       - bridge
       - tag
       - type
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/QinQPlugin.pm
     PveSdnZoneVxlanConfig:
       additionalProperties: false
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -48068,6 +48560,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         dns:
           description: dns api server
           type: string
@@ -48099,10 +48592,30 @@ components:
           type: string
       required:
       - type
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/VxlanPlugin.pm
     PveSdnZoneEvpnConfig:
       additionalProperties: false
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -48176,6 +48689,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         mac:
           description: Anycast logical router mac address.
           format: mac-addr
@@ -48209,10 +48723,30 @@ components:
       - controller
       - type
       - vrf-vxlan
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/EvpnPlugin.pm
     PveSdnZoneFaucetConfig:
       additionalProperties: false
       properties:
+        lock-token:
+          description: the token for unlocking the global SDN configuration
+          type: string
+          x-pve-typetext: <string>
+        secondary-controllers:
+          description: Additional controllers.
+          items:
+            maxLength: 64
+            minLength: 2
+            pattern: "[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"
+            type: string
+          type: array
+          x-pve-typetext: <array>
+        zone:
+          description: The SDN zone object identifier.
+          maxLength: 8
+          minLength: 2
+          pattern: "[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"
+          type: string
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -48224,6 +48758,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         controller:
           description: Controller for this zone.
           type: string
@@ -48255,6 +48790,7 @@ components:
       - controller
       - dp-id
       - type
+      - zone
       x-pve-plugin-source: proxmox/pve-network/src/PVE/Network/SDN/Zones/FaucetPlugin.pm
     ClusterSdnCreateZonesRequest:
       discriminator:
@@ -48420,6 +48956,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         exitnodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -48463,6 +49000,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         nodes:
           description: List of cluster node names.
           format: pve-node-list
@@ -48502,6 +49040,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         vlan-protocol:
           allOf:
           - $ref: "#/components/schemas/PveVlanProtocolEnum"
@@ -48968,6 +49507,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         path:
           description: Path to the containing file.
           type: string
@@ -50006,6 +50546,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         wal_dev:
           description: Block device name for block.wal.
           type: string
@@ -50300,12 +50841,14 @@ components:
           format: int64
           minimum: 2
           type: integer
+          x-int64: true
         m:
           description: Number of coding chunks. Will create an erasure coded pool
             plus a replicated pool for metadata.
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         profile:
           description: Override the erasure code (EC) profile to use. Will create
             an erasure coded pool plus a replicated pool for metadata.
@@ -51820,11 +52363,13 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         spares:
           description: Number of dRAID spares.
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
       required:
       - data
       - spares
@@ -52259,6 +52804,7 @@ components:
           minimum: 32768
           type: integer
           x-pve-typetext: <integer> (32768 - N)
+          x-int64: true
         nf_conntrack_tcp_timeout_established:
           default: 432000
           description: Conntrack established timeout.
@@ -52266,6 +52812,7 @@ components:
           minimum: 7875
           type: integer
           x-pve-typetext: <integer> (7875 - N)
+          x-int64: true
         nf_conntrack_tcp_timeout_syn_recv:
           default: 60
           description: Conntrack syn recv timeout.
@@ -52299,12 +52846,14 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         protection_synflood_rate:
           default: 200
           description: Synflood protection rate syn/sec by ip src.
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         smurf_log_level:
           allOf:
           - $ref: "#/components/schemas/PveLogEnum"
@@ -52808,6 +53357,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         mode:
           description: Access mode to be set on the device node
           pattern: "0[0-7]{3}"
@@ -52825,6 +53375,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
       x-pve-compound: true
     PveDevField:
       oneOf:
@@ -54039,6 +54590,7 @@ components:
           minimum: 16
           type: integer
           x-pve-typetext: <integer> (16 - N)
+          x-int64: true
         mp0:
           allOf:
           - $ref: "#/components/schemas/PveMpField"
@@ -56409,6 +56961,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         tags:
           description: Tags of the Container. This is only meta information.
           format: pve-tag-list
@@ -61757,6 +62310,7 @@ components:
           minimum: 16
           type: integer
           x-pve-typetext: <integer> (16 - N)
+          x-int64: true
         mp0:
           allOf:
           - $ref: "#/components/schemas/PveMpField"
@@ -64092,6 +64646,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         tags:
           description: Tags of the Container. This is only meta information.
           format: pve-tag-list
@@ -68624,6 +69179,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
       required:
       - target
     LxcMigrateVmResponse:
@@ -69397,6 +69953,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
       required:
       - target-bridge
       - target-endpoint
@@ -70063,6 +70620,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
     LxcVmRebootResponse:
       example:
         total: 0
@@ -70117,6 +70675,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
     LxcVmShutdownResponse:
       example:
         total: 0
@@ -71432,17 +71991,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -71452,11 +72014,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -71466,6 +72030,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -71505,22 +72070,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -71529,17 +72098,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -71548,12 +72120,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         mbps:
           description: Maximum r/w speed in megabytes per second.
           type: number
@@ -71684,6 +72258,7 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
       required:
       - size
       x-pve-compound: true
@@ -71763,6 +72338,7 @@ components:
           format: int64
           minimum: 16
           type: integer
+          x-int64: true
           x-pve-default-key: true
       required:
       - current
@@ -71987,17 +72563,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -72007,11 +72586,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -72021,6 +72602,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -72060,22 +72642,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -72084,17 +72670,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -72103,12 +72692,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         mbps:
           description: Maximum r/w speed in megabytes per second.
           type: number
@@ -72234,17 +72825,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -72254,11 +72848,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -72268,6 +72864,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -72307,22 +72904,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -72331,17 +72932,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -72350,12 +72954,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iothread:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -72400,6 +73006,7 @@ components:
           format: int64
           minimum: 2
           type: integer
+          x-int64: true
         replicate:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -72731,17 +73338,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -72751,11 +73361,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -72765,6 +73377,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -72804,22 +73417,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -72828,17 +73445,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -72847,12 +73467,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iothread:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -73589,6 +74211,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         bios:
           allOf:
           - $ref: "#/components/schemas/PveBiosEnum"
@@ -73614,6 +74237,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         cdrom:
           description: This is an alias for option -ide2
           format: pve-qm-ide
@@ -73659,6 +74283,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         cpu:
           description: Emulated CPU type.
           format: pve-vm-cpu-conf
@@ -74825,6 +75450,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         name:
           description: Set a name for the VM. Only used on the configuration web interface.
           format: dns-name
@@ -75685,6 +76311,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         sockets:
           default: 1
           description: The number of CPU sockets.
@@ -75692,6 +76319,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         spice_enhancements:
           allOf:
           - $ref: "#/components/schemas/PveSpiceEnhancementsField"
@@ -77876,6 +78504,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         vga:
           allOf:
           - $ref: "#/components/schemas/PveVgaField"
@@ -80213,6 +80842,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         description:
           description: Description for the new VM.
           type: string
@@ -80438,17 +81068,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -80458,11 +81091,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -80472,6 +81107,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -80502,22 +81138,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -80526,17 +81166,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -80545,12 +81188,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         mbps:
           description: Maximum r/w speed in megabytes per second.
           type: number
@@ -80683,6 +81328,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
       x-pve-compound: true
     PveMetaField:
       oneOf:
@@ -80716,17 +81362,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -80736,11 +81385,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -80750,6 +81401,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -80780,22 +81432,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -80804,17 +81460,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -80823,12 +81482,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         mbps:
           description: Maximum r/w speed in megabytes per second.
           type: number
@@ -80943,17 +81604,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -80963,11 +81627,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -80977,6 +81643,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -81007,22 +81674,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -81031,17 +81702,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -81050,12 +81724,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iothread:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -81100,6 +81776,7 @@ components:
           format: int64
           minimum: 2
           type: integer
+          x-int64: true
         replicate:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -81261,17 +81938,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_rd:
           description: Maximum read speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_rd_length:
           type: string
           x-pve-alias: bps_rd_max_length
@@ -81281,11 +81961,13 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         bps_wr:
           description: Maximum write speed in bytes per second.
           format: int64
           type: integer
           x-pve-format-description: bps
+          x-int64: true
         bps_wr_length:
           type: string
           x-pve-alias: bps_wr_max_length
@@ -81295,6 +81977,7 @@ components:
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         cache:
           allOf:
           - $ref: "#/components/schemas/PveCacheEnum"
@@ -81325,22 +82008,26 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max:
           description: Maximum unthrottled r/w I/O pool in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_max_length:
           description: Maximum length of I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_rd:
           description: Maximum read I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_length:
           type: string
           x-pve-alias: iops_rd_max_length
@@ -81349,17 +82036,20 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_rd_max_length:
           description: Maximum length of read I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iops_wr:
           description: Maximum write I/O in operations per second.
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_length:
           type: string
           x-pve-alias: iops_wr_max_length
@@ -81368,12 +82058,14 @@ components:
           format: int64
           type: integer
           x-pve-format-description: iops
+          x-int64: true
         iops_wr_max_length:
           description: Maximum length of write I/O bursts in seconds.
           format: int64
           minimum: 1
           type: integer
           x-pve-format-description: seconds
+          x-int64: true
         iothread:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -82562,6 +83254,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         bios:
           allOf:
           - $ref: "#/components/schemas/PveBiosEnum"
@@ -82626,6 +83319,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         cpu:
           description: Emulated CPU type.
           format: pve-vm-cpu-conf
@@ -83793,6 +84487,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         name:
           description: Set a name for the VM. Only used on the configuration web interface.
           format: dns-name
@@ -84659,6 +85354,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         sockets:
           default: 1
           description: The number of CPU sockets.
@@ -84666,6 +85362,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         spice_enhancements:
           allOf:
           - $ref: "#/components/schemas/PveSpiceEnhancementsField"
@@ -86829,6 +87526,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         vga:
           allOf:
           - $ref: "#/components/schemas/PveVgaField"
@@ -89075,6 +89773,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         bios:
           allOf:
           - $ref: "#/components/schemas/PveBiosEnum"
@@ -89139,6 +89838,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         cpu:
           description: Emulated CPU type.
           format: pve-vm-cpu-conf
@@ -90297,6 +90997,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         name:
           description: Set a name for the VM. Only used on the configuration web interface.
           format: dns-name
@@ -91163,6 +91864,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         sockets:
           default: 1
           description: The number of CPU sockets.
@@ -91170,6 +91872,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         spice_enhancements:
           allOf:
           - $ref: "#/components/schemas/PveSpiceEnhancementsField"
@@ -93333,6 +94036,7 @@ components:
           minimum: 1
           type: integer
           x-pve-typetext: <integer> (1 - N)
+          x-int64: true
         vga:
           allOf:
           - $ref: "#/components/schemas/PveVgaField"
@@ -95636,6 +96340,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         force:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -96074,6 +96779,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         delete:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -96219,6 +96925,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         delete:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -96853,6 +97560,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
     QemuVmShutdownResponse:
       example:
         total: 0
@@ -96944,6 +97652,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         with-conntrack-state:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -97009,6 +97718,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
     QemuVmStopResponse:
       example:
         total: 0
@@ -99097,12 +99807,6 @@ components:
       - data
     NodesStorageUploadRequest:
       additionalProperties: false
-      example:
-        filename: filename
-        tmpfilename: tmpfilename
-        checksum: checksum
-        checksum-algorithm: ""
-        content: ""
       properties:
         checksum:
           description: The expected checksum of the file.
@@ -99122,15 +99826,9 @@ components:
           pattern: ^(?:images|rootdir|vztmpl|backup|iso|snippets|import)$
         filename:
           description: "The name of the file to create. Caution: This will be normalized!"
-          maxLength: 255
+          format: binary
           type: string
           x-pve-typetext: <string>
-        tmpfilename:
-          description: The source file name. This parameter is usually set by the
-            REST handler. You can only overwrite it when connecting to the trusted
-            port on localhost.
-          pattern: "/var/tmp/pveupload-[0-9a-f]+"
-          type: string
       required:
       - content
       - filename
@@ -99689,6 +100387,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         compress:
           allOf:
           - $ref: "#/components/schemas/PveCompressEnum"
@@ -99742,6 +100441,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         mailnotification:
           allOf:
           - $ref: "#/components/schemas/PveMailnotificationEnum"
@@ -99799,6 +100499,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
         pool:
           description: Backup all known guest systems included in the specified pool.
           type: string
@@ -99864,6 +100565,7 @@ components:
           minimum: 0
           type: integer
           x-pve-typetext: <integer> (0 - N)
+          x-int64: true
         storage:
           description: Store resulting file to this storage.
           format: pve-storage-id
@@ -99888,6 +100590,7 @@ components:
           format: int64
           type: integer
           x-pve-typetext: <integer>
+          x-int64: true
       x-pve-polymorphic:
         discriminator: mode
         note: "apidoc.js flattens per-type properties into a single property union.\
@@ -100328,6 +101031,7 @@ components:
         nocow: ""
         preallocation: ""
         create-subdirs: ""
+        storage: storage
         prune-backups: prune-backups
         type: btrfs
         content: content
@@ -100337,8 +101041,20 @@ components:
         max-protected-backups: 0
         nodes: nodes
         disable: ""
+        authsupported: authsupported
         mkdir: ""
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         path:
           description: File system path.
           format: pve-storage-path
@@ -100384,6 +101100,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         content:
           description: |
             Allowed content types.
@@ -100449,11 +101166,23 @@ components:
           type: string
       required:
       - path
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/BTRFSPlugin.pm
     PveStorageCephfsConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         path:
           description: File system path.
           format: pve-storage-path
@@ -100568,6 +101297,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         fs-name:
           description: The Ceph filesystem name.
           format: pve-configid
@@ -100580,11 +101310,23 @@ components:
           type: string
       required:
       - path
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/CephFSPlugin.pm
     PveStorageCifsConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         path:
           description: File system path.
           format: pve-storage-path
@@ -100643,6 +101385,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         content:
           description: |
             Allowed content types.
@@ -100731,11 +101474,23 @@ components:
       - path
       - server
       - share
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/CIFSPlugin.pm
     PveStorageDirConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         path:
           description: File system path.
           format: pve-storage-path
@@ -100787,6 +101542,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         content:
           description: |
             Allowed content types.
@@ -100854,11 +101610,23 @@ components:
           type: string
       required:
       - path
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/DirPlugin.pm
     PveStorageEsxiConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         nodes:
           description: List of nodes for which the storage configuration applies.
           format: pve-node-list
@@ -100926,12 +101694,24 @@ components:
           type: string
       required:
       - server
+      - storage
       - type
       - username
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/ESXiPlugin.pm
     PveStorageIscsiConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         portal:
           description: iSCSI portal (IP or DNS name with optional port).
           format: pve-storage-portal-dns
@@ -100973,12 +101753,24 @@ components:
           type: string
       required:
       - portal
+      - storage
       - target
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/ISCSIPlugin.pm
     PveStorageIscsidirectConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         portal:
           description: iSCSI portal (IP or DNS name with optional port).
           format: pve-storage-portal-dns
@@ -101020,12 +101812,24 @@ components:
           type: string
       required:
       - portal
+      - storage
       - target
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/ISCSIDirectPlugin.pm
     PveStorageLvmConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         vgname:
           description: Volume group name.
           format: pve-storage-vgname
@@ -101107,12 +101911,24 @@ components:
           - lvm
           type: string
       required:
+      - storage
       - type
       - vgname
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/LVMPlugin.pm
     PveStorageLvmthinConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         thinpool:
           description: LVM thin pool LV name.
           format: pve-storage-vgname
@@ -101155,6 +101971,7 @@ components:
           - lvmthin
           type: string
       required:
+      - storage
       - thinpool
       - type
       - vgname
@@ -101162,6 +101979,17 @@ components:
     PveStorageNfsConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         path:
           description: File system path.
           format: pve-storage-path
@@ -101216,6 +102044,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         options:
           description: NFS/CIFS mount options (see 'man nfs' or 'man mount.cifs')
           format: pve-storage-options
@@ -101284,11 +102113,23 @@ components:
       - export
       - path
       - server
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/NFSPlugin.pm
     PveStoragePbsConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         server:
           description: Server IP or DNS name.
           format: pve-storage-server
@@ -101369,6 +102210,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         fingerprint:
           description: Certificate SHA 256 fingerprint.
           pattern: "([A-Fa-f0-9]{2}:){31}[A-Fa-f0-9]{2}"
@@ -101380,11 +102222,23 @@ components:
       required:
       - datastore
       - server
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/PBSPlugin.pm
     PveStorageRbdConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         nodes:
           description: List of nodes for which the storage configuration applies.
           format: pve-node-list
@@ -101448,11 +102302,23 @@ components:
           - rbd
           type: string
       required:
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/RBDPlugin.pm
     PveStorageZfsConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         nodes:
           description: List of nodes for which the storage configuration applies.
           format: pve-node-list
@@ -101543,12 +102409,24 @@ components:
       - iscsiprovider
       - pool
       - portal
+      - storage
       - target
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/ZFSPlugin.pm
     PveStorageZfspoolConfig:
       additionalProperties: false
       properties:
+        authsupported:
+          description: Authsupported.
+          type: string
+          x-pve-typetext: <string>
+        storage:
+          description: The storage identifier.
+          format: pve-storage-id
+          pattern: "^[a-z][a-z0-9\\-_.]*[a-z0-9]$"
+          type: string
+          x-pve-typetext: <storage ID>
+          x-pve-format-description: storage ID
         pool:
           description: Pool.
           type: string
@@ -101603,6 +102481,7 @@ components:
           type: string
       required:
       - pool
+      - storage
       - type
       x-pve-plugin-source: proxmox/pve-storage/src/PVE/Storage/ZFSPoolPlugin.pm
     StorageCreateStorageRequest:
@@ -101886,6 +102765,7 @@ components:
           minimum: -1
           type: integer
           x-pve-typetext: <integer> (-1 - N)
+          x-int64: true
         mkdir:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -102466,6 +103346,7 @@ components:
           description: Creation time of this entry as unix epoch.
           format: int64
           type: integer
+          x-int64: true
         description:
           description: User chosen description for this entry.
           type: string
@@ -102513,6 +103394,7 @@ components:
             factors.
           format: int64
           type: integer
+          x-int64: true
         totp-locked:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -102579,6 +103461,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         privsep:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -102638,6 +103521,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         firstname:
           maxLength: 1024
           type: string
@@ -102662,6 +103546,7 @@ components:
             factors.
           format: int64
           type: integer
+          x-int64: true
         tokens:
           items:
             $ref: "#/components/schemas/AccessUsersGetUsersResponse_data_inner_tokens_inner"
@@ -102693,6 +103578,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         privsep:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -102740,6 +103626,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         firstname:
           maxLength: 1024
           type: string
@@ -102822,6 +103709,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         full-tokenid:
           description: The full token id. Only set when 'regenerate' was set.
           type: string
@@ -103023,6 +103911,7 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
     ClusterBackupGetBackupResponse_data_inner_prune_backups:
       description: Use these retention options instead of those from the storage configuration.
       example:
@@ -103045,35 +103934,41 @@ components:
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
         keep-hourly:
           description: "Keep backups for the last <N> different hours. If there is\
             \ morethan one backup for a single hour, only the latest one is kept."
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
         keep-last:
           description: Keep the last <N> backups.
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
         keep-monthly:
           description: "Keep backups for the last <N> different months. If there is\
             \ morethan one backup for a single month, only the latest one is kept."
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
         keep-weekly:
           description: "Keep backups for the last <N> different weeks. If there is\
             \ morethan one backup for a single week, only the latest one is kept."
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
         keep-yearly:
           description: "Keep backups for the last <N> different years. If there is\
             \ morethan one backup for a single year, only the latest one is kept."
           format: int64
           type: integer
           x-pve-format-description: "N"
+          x-int64: true
     ClusterBackupGetBackupResponse_data_inner:
       example:
         exclude-path:
@@ -103139,6 +104034,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         comment:
           description: Description for the Job.
           maxLength: 512
@@ -103191,6 +104087,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         mailnotification:
           allOf:
           - $ref: "#/components/schemas/PveMailnotificationEnum"
@@ -103212,6 +104109,7 @@ components:
           description: UNIX timestamp when this backup job will be executed next
           format: int64
           type: integer
+          x-int64: true
         node:
           description: Only run if executed on this node.
           format: pve-node
@@ -103250,6 +104148,7 @@ components:
             \ N>1 uses N as thread count."
           format: int64
           type: integer
+          x-int64: true
         pool:
           description: Backup all known guest systems included in the specified pool.
           type: string
@@ -103308,6 +104207,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         storage:
           description: Store resulting file to this storage.
           format: pve-storage-id
@@ -103328,6 +104228,7 @@ components:
             \ set to a value bigger than 0, N is used as thread count."
           format: int64
           type: integer
+          x-int64: true
       required:
       - id
     ClusterBackupInfoGetBackupInfoResponse_data_inner:
@@ -103356,6 +104257,7 @@ components:
           description: VMID of the guest.
           format: int64
           type: integer
+          x-int64: true
       required:
       - type
       - vmid
@@ -103410,6 +104312,7 @@ components:
           description: VMID of the guest.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Name of the guest
           type: string
@@ -103507,10 +104410,12 @@ components:
           description: Memory of the service currently in swap.
           format: int64
           type: integer
+          x-int64: true
         mem_total_kb:
           description: Memory consumption of the service.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Name of the service instance.
           type: string
@@ -103551,10 +104456,12 @@ components:
           description: Memory of the service currently in swap.
           format: int64
           type: integer
+          x-int64: true
         mem_total_kb:
           description: Memory consumption of the service.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Name of the service instance.
           type: string
@@ -103595,10 +104502,12 @@ components:
           description: Memory of the service currently in swap.
           format: int64
           type: integer
+          x-int64: true
         mem_total_kb:
           description: Memory consumption of the service.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Name of the service instance.
           type: string
@@ -103694,14 +104603,17 @@ components:
           description: OSD ID.
           format: int64
           type: integer
+          x-int64: true
         mem_swap_kb:
           description: Memory of the service currently in swap.
           format: int64
           type: integer
+          x-int64: true
         mem_total_kb:
           description: Memory consumption of the service.
           format: int64
           type: integer
+          x-int64: true
         osd_data:
           description: Path to the OSD data directory.
           type: string
@@ -103839,6 +104751,7 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         pve_addr:
           format: ip
           pattern: "^(?:(?:[0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}|(?:[0-9]{1,3}\\\
@@ -103852,6 +104765,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         ring0_addr:
           allOf:
           - $ref: "#/components/schemas/PveRing0AddrField"
@@ -104007,6 +104921,7 @@ components:
           description: Flag to enable/disable a rule
           format: int64
           type: integer
+          x-int64: true
         icmp-type:
           description: Specify icmp-type. Only valid if proto equals 'icmp' or 'icmpv6'/'ipv6-icmp'
           type: string
@@ -104019,6 +104934,7 @@ components:
             addresses
           format: int64
           type: integer
+          x-int64: true
         log:
           allOf:
           - $ref: "#/components/schemas/PveLogEnum"
@@ -104030,6 +104946,7 @@ components:
           description: Rule position in the ruleset
           format: int64
           type: integer
+          x-int64: true
         proto:
           description: "IP protocol. You can use protocol names ('tcp'/'udp') or simple\
             \ numbers, as defined in '/etc/protocols'"
@@ -104127,6 +105044,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         log_ratelimit:
           allOf:
           - $ref: "#/components/schemas/PveLogRatelimitField"
@@ -104233,11 +105151,13 @@ components:
             to start.
           format: int64
           type: integer
+          x-int64: true
         max_restart:
           description: Maximal number of tries to restart the service on a node after
             its start failed.
           format: int64
           type: integer
+          x-int64: true
         sid:
           description: "HA resource ID. This consists of a resource type followed\
             \ by a resource specific name, separated with colon (example: vm:100 /\
@@ -104430,10 +105350,12 @@ components:
           description: For type 'service'.
           format: int64
           type: integer
+          x-int64: true
         max_restart:
           description: For type 'service'.
           format: int64
           type: integer
+          x-int64: true
         node:
           description: Node associated to status entry.
           type: string
@@ -104462,6 +105384,7 @@ components:
           description: "For type 'lrm','master'. Timestamp of the status information."
           format: int64
           type: integer
+          x-int64: true
         type:
           description: Type of status entry.
           enum:
@@ -104504,11 +105427,13 @@ components:
             of the UNIX epoch
           format: int64
           type: integer
+          x-int64: true
         next-run:
           description: Next planned execution time of the job in seconds since the
             beginning of the UNIX epoch.
           format: int64
           type: integer
+          x-int64: true
         realm:
           description: Authentication domain ID
           format: pve-realm
@@ -104550,6 +105475,7 @@ components:
           description: UNIX timestamp for the run.
           format: int64
           type: integer
+          x-int64: true
         utc:
           description: UTC timestamp for the run.
           type: string
@@ -104687,6 +105613,7 @@ components:
             for detecting hardware changes.
           format: int64
           type: integer
+          x-int64: true
         node:
           description: The cluster node name.
           format: pve-node
@@ -104798,6 +105725,7 @@ components:
           description: Time at which this metric was observed
           format: int64
           type: integer
+          x-int64: true
         type:
           allOf:
           - $ref: "#/components/schemas/PveClusterMetricsTypeEnum"
@@ -104853,6 +105781,7 @@ components:
           description: Server network port
           format: int64
           type: integer
+          x-int64: true
         server:
           description: Server dns name or IP address
           type: string
@@ -105111,6 +106040,7 @@ components:
             \ connections."
           format: int64
           type: integer
+          x-int64: true
         server:
           description: The address of the SMTP server.
           type: string
@@ -105191,6 +106121,7 @@ components:
             \ connections."
           format: int64
           type: integer
+          x-int64: true
         server:
           description: The address of the SMTP server.
           type: string
@@ -105755,6 +106686,7 @@ components:
           description: Guest ID.
           format: int64
           type: integer
+          x-int64: true
         id:
           description: "Replication Job ID. The ID is composed of a Guest ID and a\
             \ job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'."
@@ -105765,6 +106697,7 @@ components:
           description: "Unique, sequential ID assigned to each job."
           format: int64
           type: integer
+          x-int64: true
         rate:
           description: Rate limit in mbps (megabytes per second) as floating point
             number.
@@ -105838,6 +106771,7 @@ components:
           description: Guest ID.
           format: int64
           type: integer
+          x-int64: true
         id:
           description: "Replication Job ID. The ID is composed of a Guest ID and a\
             \ job number, separated by a hyphen, i.e. '<GUEST>-<JOBNUM>'."
@@ -105848,6 +106782,7 @@ components:
           description: "Unique, sequential ID assigned to each job."
           format: int64
           type: integer
+          x-int64: true
         rate:
           description: Rate limit in mbps (megabytes per second) as floating point
             number.
@@ -105930,6 +106865,7 @@ components:
           description: The cgroup mode the node operates under (for type 'node').
           format: int64
           type: integer
+          x-int64: true
         content:
           description: Allowed storage content types (for type 'storage').
           format: pve-storage-content-list
@@ -105945,18 +106881,21 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         diskread:
           description: The number of bytes the guest read from its block devices since
             the guest was started. This info is not available for all storage types.
             (for types 'qemu' and 'lxc')
           format: int64
           type: integer
+          x-int64: true
         diskwrite:
           description: The number of bytes the guest wrote to its block devices since
             the guest was started. This info is not available for all storage types.
             (for types 'qemu' and 'lxc')
           format: int64
           type: integer
+          x-int64: true
         hastate:
           description: HA service status (for HA managed VMs).
           type: string
@@ -105984,22 +106923,26 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         maxmem:
           description: "Number of available memory in bytes (for types 'node', 'qemu'\
             \ and 'lxc')."
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: "Used memory in bytes (for types 'node', 'qemu' and 'lxc')."
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         memhost:
           description: Used memory in bytes from the point of view of the host (for
             types 'qemu').
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         name:
           description: Name of the resource.
           type: string
@@ -106008,11 +106951,13 @@ components:
             the network since it was started. (for types 'qemu' and 'lxc')
           format: int64
           type: integer
+          x-int64: true
         netout:
           description: The amount of traffic in bytes that was sent from the guest
             over the network since it was started. (for types 'qemu' and 'lxc')
           format: int64
           type: integer
+          x-int64: true
         network:
           description: The name of a Network entity (for type 'network').
           type: string
@@ -106072,6 +107017,7 @@ components:
             \ 'qemu' and 'lxc')."
           format: int64
           type: integer
+          x-int64: true
         vmid:
           description: The numerical vmid (for types 'qemu' and 'lxc').
           format: pve-vmid
@@ -106128,6 +107074,7 @@ components:
             1. BGP only.
           format: int64
           type: integer
+          x-int64: true
         isis-domain:
           description: Name of the IS-IS domain. IS-IS only.
           type: string
@@ -106228,6 +107175,7 @@ components:
             1. BGP only.
           format: int64
           type: integer
+          x-int64: true
         isis-domain:
           description: Name of the IS-IS domain. IS-IS only.
           type: string
@@ -107052,6 +108000,7 @@ components:
           description: "MTU of the zone, will be used for the created VNet bridges."
           format: int64
           type: integer
+          x-int64: true
         nodes:
           description: Nodes where this zone should be created.
           type: string
@@ -107083,6 +108032,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         vlan-protocol:
           allOf:
           - $ref: "#/components/schemas/PveVlanProtocolEnum"
@@ -107223,6 +108173,7 @@ components:
           description: "MTU of the zone, will be used for the created VNet bridges."
           format: int64
           type: integer
+          x-int64: true
         nodes:
           description: Nodes where this zone should be created.
           type: string
@@ -107260,6 +108211,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         type:
           allOf:
           - $ref: "#/components/schemas/PveClusterSdnTypeTypeEnum4"
@@ -107323,10 +108275,12 @@ components:
           description: "[node] ID of the node from the corosync configuration."
           format: int64
           type: integer
+          x-int64: true
         nodes:
           description: "[cluster] Nodes count, including offline nodes."
           format: int64
           type: integer
+          x-int64: true
         online:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -107347,6 +108301,7 @@ components:
           description: "[cluster] Current version of the corosync configuration file."
           format: int64
           type: integer
+          x-int64: true
       required:
       - id
       - name
@@ -107385,14 +108340,17 @@ components:
           description: Number of available CPUs.
           format: int64
           type: integer
+          x-int64: true
         maxmem:
           description: Number of available memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: Used memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         node:
           description: The cluster node name.
           format: pve-node
@@ -107409,6 +108367,7 @@ components:
           description: Node uptime in seconds.
           format: int64
           type: integer
+          x-int64: true
         id:
           description: Resource id of the form "node/<name>".
           example: node/orca
@@ -107593,6 +108552,7 @@ components:
           items:
             format: int64
             type: integer
+            x-int64: true
           type: array
         file-type:
           allOf:
@@ -108124,6 +109084,7 @@ components:
           items:
             format: int64
             type: integer
+            x-int64: true
           type: array
         data_pools:
           description: "Names of all data pools assigned to the filesystem; a CephFS\
@@ -108139,6 +109100,7 @@ components:
           description: Numeric id of the metadata pool.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: The ceph filesystem name.
           type: string
@@ -108155,6 +109117,7 @@ components:
           description: Log-file line number (1-based).
           format: int64
           type: integer
+          x-int64: true
         t:
           description: Log line text.
           type: string
@@ -108205,6 +109168,7 @@ components:
             bound to a rank.
           format: int64
           type: integer
+          x-int64: true
         service:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -108315,6 +109279,7 @@ components:
           description: Rank of the monitor within the mon map.
           format: int64
           type: integer
+          x-int64: true
         service:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -108367,6 +109332,7 @@ components:
           description: Size of the logical volume (LV).
           format: int64
           type: integer
+          x-int64: true
         lv_uuid:
           description: UUID of the logical volume (LV).
           type: string
@@ -108404,6 +109370,7 @@ components:
           description: Size of the OSD device in bytes.
           format: int64
           type: integer
+          x-int64: true
         support_discard:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -108459,11 +109426,13 @@ components:
           description: ID of the OSD.
           format: int64
           type: integer
+          x-int64: true
         mem_usage:
           description: Proportional set size (PSS) memory usage of the OSD daemon
             process in bytes; 0 when the process is not running.
           format: int64
           type: integer
+          x-int64: true
         osd_data:
           description: Path to the OSD's data directory.
           type: string
@@ -108475,6 +109444,7 @@ components:
             not currently running.
           format: int64
           type: integer
+          x-int64: true
         version:
           description: Ceph version of the OSD service.
           type: string
@@ -108565,11 +109535,13 @@ components:
           format: int64
           title: Used
           type: integer
+          x-int64: true
         crush_rule:
           description: Numeric id of the CRUSH rule used by this pool.
           format: int64
           title: Crush Rule
           type: integer
+          x-int64: true
         crush_rule_name:
           description: Human-readable name of the CRUSH rule used by this pool; absent
             if the rule id is not in the current CRUSH map.
@@ -108580,6 +109552,7 @@ components:
           format: int64
           title: Min Size
           type: integer
+          x-int64: true
         percent_used:
           description: Percentage of pool capacity currently used; absent if no usage
             statistics are reported.
@@ -108594,21 +109567,25 @@ components:
           format: int64
           title: PG Num
           type: integer
+          x-int64: true
         pg_num_final:
           description: Optimal placement-group count computed by pg_autoscaler.
           format: int64
           title: Optimal PG Num
           type: integer
+          x-int64: true
         pg_num_min:
           description: Minimum placement-group count the pg_autoscaler may choose.
           format: int64
           title: min. PG Num
           type: integer
+          x-int64: true
         pool:
           description: Numeric pool id assigned by Ceph.
           format: int64
           title: ID
           type: integer
+          x-int64: true
         pool_name:
           description: Operator-visible name of the pool.
           title: Name
@@ -108618,11 +109595,13 @@ components:
           format: int64
           title: Size
           type: integer
+          x-int64: true
         target_size:
           description: Operator-supplied target size in bytes; hints the pg_autoscaler.
           format: int64
           title: PG Autoscale Target Size
           type: integer
+          x-int64: true
         target_size_ratio:
           description: Operator-supplied target ratio of total pool capacity; hints
             the pg_autoscaler.
@@ -108709,6 +109688,7 @@ components:
           format: int64
           title: ID
           type: integer
+          x-int64: true
         min_size:
           default: 2
           description: Minimum number of replicas per object
@@ -108775,6 +109755,7 @@ components:
           format: int64
           title: PGP num
           type: integer
+          x-int64: true
         size:
           default: 3
           description: Number of replicas per object
@@ -108858,10 +109839,12 @@ components:
           description: Certificate's notAfter timestamp (UNIX epoch).
           format: int64
           type: integer
+          x-int64: true
         notbefore:
           description: Certificate's notBefore timestamp (UNIX epoch).
           format: int64
           type: integer
+          x-int64: true
         pem:
           description: Certificate in PEM format
           format: pem-certificate
@@ -108871,6 +109854,7 @@ components:
           description: Certificate's public key size
           format: int64
           type: integer
+          x-int64: true
         public-key-type:
           description: Certificate's public key algorithm
           type: string
@@ -109102,10 +110086,12 @@ components:
         osdid:
           format: int64
           type: integer
+          x-int64: true
         osdid-list:
           items:
             format: int64
             type: integer
+            x-int64: true
           type: array
         parent:
           description: For partitions only. The device path of the disk the partition
@@ -109116,6 +110102,7 @@ components:
         size:
           format: int64
           type: integer
+          x-int64: true
         used:
           type: string
         vendor:
@@ -109140,6 +110127,7 @@ components:
           description: The free bytes in the physical volume
           format: int64
           type: integer
+          x-int64: true
         leaf:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -109151,6 +110139,7 @@ components:
           description: The size of the physical volume in bytes
           format: int64
           type: integer
+          x-int64: true
       required:
       - free
       - leaf
@@ -109181,6 +110170,7 @@ components:
           description: The free bytes in the volume group
           format: int64
           type: integer
+          x-int64: true
         leaf:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -109192,6 +110182,7 @@ components:
           description: The size of the volume group in bytes
           format: int64
           type: integer
+          x-int64: true
       required:
       - free
       - leaf
@@ -109255,18 +110246,22 @@ components:
           description: The size of the thinpool in bytes.
           format: int64
           type: integer
+          x-int64: true
         metadata_size:
           description: The size of the metadata lv in bytes.
           format: int64
           type: integer
+          x-int64: true
         metadata_used:
           description: The used bytes of the metadata lv.
           format: int64
           type: integer
+          x-int64: true
         used:
           description: The used bytes of the thinpool.
           format: int64
           type: integer
+          x-int64: true
         vg:
           description: The associated volume group.
           type: string
@@ -109310,14 +110305,17 @@ components:
         alloc:
           format: int64
           type: integer
+          x-int64: true
         dedup:
           type: number
         frag:
           format: int64
           type: integer
+          x-int64: true
         free:
           format: int64
           type: integer
+          x-int64: true
         health:
           type: string
         name:
@@ -109325,6 +110323,7 @@ components:
         size:
           format: int64
           type: integer
+          x-int64: true
       required:
       - alloc
       - dedup
@@ -109440,6 +110439,7 @@ components:
           description: Line number
           format: int64
           type: integer
+          x-int64: true
         t:
           description: Line text
           type: string
@@ -109517,12 +110517,14 @@ components:
           format: int64
           minimum: 32768
           type: integer
+          x-int64: true
         nf_conntrack_tcp_timeout_established:
           default: 432000
           description: Conntrack established timeout.
           format: int64
           minimum: 7875
           type: integer
+          x-int64: true
         nf_conntrack_tcp_timeout_syn_recv:
           default: 60
           description: Conntrack syn recv timeout.
@@ -109551,11 +110553,13 @@ components:
           description: Synflood protection rate burst by ip src.
           format: int64
           type: integer
+          x-int64: true
         protection_synflood_rate:
           default: 200
           description: Synflood protection rate syn/sec by ip src.
           format: int64
           type: integer
+          x-int64: true
         smurf_log_level:
           allOf:
           - $ref: "#/components/schemas/PveLogEnum"
@@ -109609,6 +110613,7 @@ components:
             \ is detected, it is set to -1."
           format: int64
           type: integer
+          x-int64: true
         mdev:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -109655,6 +110660,7 @@ components:
           description: The number of still available instances of this type.
           format: int64
           type: integer
+          x-int64: true
         description:
           description: Additional description of the type.
           type: string
@@ -109686,20 +110692,25 @@ components:
         busnum:
           format: int64
           type: integer
+          x-int64: true
         class:
           format: int64
           type: integer
+          x-int64: true
         devnum:
           format: int64
           type: integer
+          x-int64: true
         level:
           format: int64
           type: integer
+          x-int64: true
         manufacturer:
           type: string
         port:
           format: int64
           type: integer
+          x-int64: true
         prodid:
           type: string
         product:
@@ -109773,18 +110784,21 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         diskread:
           description: "The amount of bytes the guest read from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         diskwrite:
           description: "The amount of bytes the guest wrote from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         lock:
           description: "The current config lock, if any."
           type: string
@@ -109792,18 +110806,22 @@ components:
           description: Root disk image size in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxmem:
           description: Maximum memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxswap:
           description: Maximum SWAP memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: Currently used memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Container name.
           type: string
@@ -109812,11 +110830,13 @@ components:
             the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         netout:
           description: The amount of traffic in bytes that was sent from the guest
             over the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         pressurecpusome:
           description: CPU Some pressure stall average over the last 10 seconds.
           type: number
@@ -109849,6 +110869,7 @@ components:
           description: Uptime in seconds.
           format: int64
           type: integer
+          x-int64: true
         vmid:
           description: The (unique) ID of the VM.
           format: pve-vmid
@@ -110618,6 +111639,7 @@ components:
           format: int64
           minimum: 16
           type: integer
+          x-int64: true
         mp0:
           allOf:
           - $ref: "#/components/schemas/PveLxcMpField"
@@ -112942,6 +113964,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         tags:
           description: Tags of the Container. This is only meta information.
           format: pve-tag-list
@@ -116815,6 +117838,7 @@ components:
           description: IP-Prefix
           format: int64
           type: integer
+          x-int64: true
     LxcIpResponse_data_inner:
       example:
         hwaddr: hwaddr
@@ -116967,6 +117991,7 @@ components:
           description: Snapshot creation time
           format: int64
           type: integer
+          x-int64: true
       required:
       - description
       - name
@@ -117017,18 +118042,21 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         diskread:
           description: "The amount of bytes the guest read from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         diskwrite:
           description: "The amount of bytes the guest wrote from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         ha:
           description: HA manager service status.
           type: object
@@ -117039,18 +118067,22 @@ components:
           description: Root disk image size in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxmem:
           description: Maximum memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxswap:
           description: Maximum SWAP memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: Currently used memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         name:
           description: Container name.
           type: string
@@ -117059,11 +118091,13 @@ components:
             the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         netout:
           description: The amount of traffic in bytes that was sent from the guest
             over the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         pressurecpusome:
           description: CPU Some pressure stall average over the last 10 seconds.
           type: number
@@ -117096,6 +118130,7 @@ components:
           description: Uptime in seconds.
           format: int64
           type: integer
+          x-int64: true
         vmid:
           description: The (unique) ID of the VM.
           format: pve-vmid
@@ -117211,6 +118246,7 @@ components:
           description: The bridge port access VLAN.
           format: int64
           type: integer
+          x-int64: true
         bridge-arp-nd-suppress:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -117357,6 +118393,7 @@ components:
           description: The order of the interface.
           format: int64
           type: integer
+          x-int64: true
         slaves:
           description: Specify the interfaces used by the bonding device.
           format: pve-iface-list
@@ -117387,6 +118424,7 @@ components:
           description: The VXLAN ID.
           format: int64
           type: integer
+          x-int64: true
         vxlan-local-tunnelip:
           description: The VXLAN local tunnel IP.
           type: string
@@ -117454,12 +118492,14 @@ components:
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         diskwrite:
           description: "The amount of bytes the guest wrote from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         lock:
           description: "The current config lock, if any."
           type: string
@@ -117467,21 +118507,25 @@ components:
           description: Root disk size in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxmem:
           description: Maximum memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: Currently used memory in bytes. Does not take into account
             kernel same-page merging (KSM). Uses information from ballooning when
             available.
           format: int64
           type: integer
+          x-int64: true
         memhost:
           description: Current memory usage on the host. Does not take into account
             kernel same-page merging (KSM).
           format: int64
           type: integer
+          x-int64: true
         name:
           description: VM (host)name.
           type: string
@@ -117490,15 +118534,18 @@ components:
             the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         netout:
           description: The amount of traffic in bytes that was sent from the guest
             over the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         pid:
           description: "PID of the QEMU process, if the VM is running."
           format: int64
           type: integer
+          x-int64: true
         pressurecpufull:
           description: CPU Full pressure stall average over the last 10 seconds.
           type: number
@@ -117548,6 +118595,7 @@ components:
           description: Uptime in seconds.
           format: int64
           type: integer
+          x-int64: true
         vmid:
           description: The (unique) ID of the VM.
           format: pve-vmid
@@ -117565,6 +118613,7 @@ components:
           description: The PID of the process started by the guest-agent.
           format: int64
           type: integer
+          x-int64: true
       required:
       - pid
     QemuExecStatusResponse_data:
@@ -117589,6 +118638,7 @@ components:
           description: process exit code if it was normally terminated.
           format: int64
           type: integer
+          x-int64: true
         exited:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -117607,6 +118657,7 @@ components:
             terminated.
           format: int64
           type: integer
+          x-int64: true
       required:
       - exited
     QemuFileReadResponse_data:
@@ -118206,6 +119257,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         bios:
           allOf:
           - $ref: "#/components/schemas/PveBiosEnum"
@@ -118264,6 +119316,7 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         cpu:
           description: Emulated CPU type.
           format: pve-vm-cpu-conf
@@ -119252,6 +120305,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         name:
           description: Set a name for the VM. Only used on the configuration web interface.
           format: dns-name
@@ -120011,17 +121065,20 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         snaptime:
           description: Timestamp for snapshots.
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         sockets:
           default: 1
           description: The number of CPU sockets.
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         spice_enhancements:
           allOf:
           - $ref: "#/components/schemas/PveQemuSpiceEnhancementsField"
@@ -122176,6 +123233,7 @@ components:
           format: int64
           minimum: 1
           type: integer
+          x-int64: true
         vga:
           allOf:
           - $ref: "#/components/schemas/PveQemuVgaField"
@@ -123845,6 +124903,7 @@ components:
           description: The size of the disk in bytes.
           format: int64
           type: integer
+          x-int64: true
         volid:
           description: The volid of the disk.
           type: string
@@ -124010,6 +125069,7 @@ components:
           description: Snapshot creation time
           format: int64
           type: integer
+          x-int64: true
         vmstate:
           allOf:
           - $ref: "#/components/schemas/PveBoolean"
@@ -124075,12 +125135,14 @@ components:
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         diskwrite:
           description: "The amount of bytes the guest wrote from it's block devices\
             \ since the guest was started. (Note: This info is not available for all\
             \ storage types.)"
           format: int64
           type: integer
+          x-int64: true
         ha:
           description: HA manager service status.
           type: object
@@ -124091,21 +125153,25 @@ components:
           description: Root disk size in bytes.
           format: int64
           type: integer
+          x-int64: true
         maxmem:
           description: Maximum memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         mem:
           description: Currently used memory in bytes. Does not take into account
             kernel same-page merging (KSM). Uses information from ballooning when
             available.
           format: int64
           type: integer
+          x-int64: true
         memhost:
           description: Current memory usage on the host. Does not take into account
             kernel same-page merging (KSM).
           format: int64
           type: integer
+          x-int64: true
         name:
           description: VM (host)name.
           type: string
@@ -124114,15 +125180,18 @@ components:
             the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         netout:
           description: The amount of traffic in bytes that was sent from the guest
             over the network since it was started.
           format: int64
           type: integer
+          x-int64: true
         pid:
           description: "PID of the QEMU process, if the VM is running."
           format: int64
           type: integer
+          x-int64: true
         pressurecpufull:
           description: CPU Full pressure stall average over the last 10 seconds.
           type: number
@@ -124177,6 +125246,7 @@ components:
           description: Uptime in seconds.
           format: int64
           type: integer
+          x-int64: true
         vmid:
           description: The (unique) ID of the VM.
           format: pve-vmid
@@ -124200,6 +125270,7 @@ components:
         size:
           format: int64
           type: integer
+          x-int64: true
     NodesScanCifsscanResponse_data_inner:
       example:
         description: description
@@ -124487,6 +125558,7 @@ components:
           description: This route's metric.
           format: int64
           type: integer
+          x-int64: true
         nexthops:
           description: A list of nexthops for the route table entry.
           items:
@@ -124566,10 +125638,12 @@ components:
           description: The number of physical cores of the CPU.
           format: int64
           type: integer
+          x-int64: true
         cpus:
           description: The number of logical threads of the CPU.
           format: int64
           type: integer
+          x-int64: true
         model:
           description: The CPU model
           type: string
@@ -124577,6 +125651,7 @@ components:
           description: The number of logical threads of the CPU.
           format: int64
           type: integer
+          x-int64: true
       required:
       - cores
       - cpus
@@ -124618,18 +125693,22 @@ components:
           description: The available memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         free:
           description: The free memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         total:
           description: The total memory in bytes.
           format: int64
           type: integer
+          x-int64: true
         used:
           description: The used memory in bytes.
           format: int64
           type: integer
+          x-int64: true
       required:
       - available
       - free
@@ -124646,18 +125725,22 @@ components:
           description: The available bytes in the root filesystem.
           format: int64
           type: integer
+          x-int64: true
         free:
           description: The free bytes on the root filesystem.
           format: int64
           type: integer
+          x-int64: true
         total:
           description: The total size of the root filesystem in bytes.
           format: int64
           type: integer
+          x-int64: true
         used:
           description: The used bytes in the root filesystem.
           format: int64
           type: integer
+          x-int64: true
       required:
       - avail
       - free
@@ -124773,6 +125856,7 @@ components:
           description: Available storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
         content:
           description: Allowed storage content types.
           format: pve-storage-content-list
@@ -124806,6 +125890,7 @@ components:
           description: Total storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
         type:
           description: Storage type.
           type: string
@@ -124813,6 +125898,7 @@ components:
           description: Used storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
         used_fraction:
           description: Used fraction (used/total).
           type: number
@@ -124859,11 +125945,13 @@ components:
             \ depend on the storage plugin."
           format: int64
           type: integer
+          x-int64: true
         ctime:
           description: Creation time (seconds since the UNIX Epoch).
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         encrypted:
           description: "If whole backup is encrypted, value is the fingerprint or\
             \ '1'  if encrypted. Only useful for the Proxmox Backup Server storage\
@@ -124889,17 +125977,20 @@ components:
           description: Volume size in bytes.
           format: int64
           type: integer
+          x-int64: true
         used:
           description: Used space. Please note that most storage plugins do not report
             anything useful here.
           format: int64
           type: integer
+          x-int64: true
         verification:
           $ref: "#/components/schemas/NodesStorageGetContentResponse_data_inner_verification"
         vmid:
           description: Associated Owner VMID.
           format: int64
           type: integer
+          x-int64: true
         volid:
           description: Volume identifier.
           type: string
@@ -124934,11 +126025,13 @@ components:
           description: Volume size in bytes.
           format: int64
           type: integer
+          x-int64: true
         used:
           description: Used space. Please note that most storage plugins do not report
             anything useful here.
           format: int64
           type: integer
+          x-int64: true
       required:
       - format
       - path
@@ -124965,10 +126058,12 @@ components:
           description: Entry last-modified time (unix timestamp).
           format: int64
           type: integer
+          x-int64: true
         size:
           description: Entry file size.
           format: int64
           type: integer
+          x-int64: true
         text:
           description: Entry display text.
           type: string
@@ -125070,6 +126165,7 @@ components:
           description: Creation time of the backup (seconds since the UNIX epoch).
           format: int64
           type: integer
+          x-int64: true
         mark:
           allOf:
           - $ref: "#/components/schemas/PveNodesStorageMarkEnum"
@@ -125082,6 +126178,7 @@ components:
           description: The VM the backup belongs to.
           format: int64
           type: integer
+          x-int64: true
         volid:
           description: Backup volume ID.
           type: string
@@ -125110,6 +126207,7 @@ components:
           description: Available storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
         content:
           description: Allowed storage content types.
           format: pve-storage-content-list
@@ -125129,6 +126227,7 @@ components:
           description: Total storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
         type:
           description: Storage type.
           type: string
@@ -125136,6 +126235,7 @@ components:
           description: Used storage space in bytes.
           format: int64
           type: integer
+          x-int64: true
       required:
       - content
       - type
@@ -125159,6 +126259,7 @@ components:
           description: Timestamp of the last check done.
           format: int64
           type: integer
+          x-int64: true
         key:
           description: "The subscription key, if set and permitted to access."
           type: string
@@ -125187,6 +126288,7 @@ components:
           description: The number of sockets for this host.
           format: int64
           type: integer
+          x-int64: true
         status:
           allOf:
           - $ref: "#/components/schemas/PveNodesSubscriptionStatusEnum"
@@ -125213,6 +126315,7 @@ components:
           format: int64
           title: Endtime
           type: integer
+          x-int64: true
         id:
           title: ID
           type: string
@@ -125223,13 +126326,16 @@ components:
           format: int64
           title: PID
           type: integer
+          x-int64: true
         pstart:
           format: int64
           type: integer
+          x-int64: true
         starttime:
           format: int64
           title: Starttime
           type: integer
+          x-int64: true
         status:
           title: Status
           type: string
@@ -125273,12 +126379,15 @@ components:
         pid:
           format: int64
           type: integer
+          x-int64: true
         pstart:
           format: int64
           type: integer
+          x-int64: true
         starttime:
           format: int64
           type: integer
+          x-int64: true
         status:
           $ref: "#/components/schemas/PveNodesTasksStatusEnum"
         type:
@@ -125309,11 +126418,13 @@ components:
           format: int64
           minimum: 1297163644
           type: integer
+          x-int64: true
         time:
           description: Seconds since 1970-01-01 00:00:00 UTC.
           format: int64
           minimum: 1297163644
           type: integer
+          x-int64: true
         timezone:
           description: Time zone
           type: string
@@ -125389,6 +126500,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         compress:
           allOf:
           - $ref: "#/components/schemas/PveCompressEnum"
@@ -125429,6 +126541,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         mailnotification:
           allOf:
           - $ref: "#/components/schemas/PveMailnotificationEnum"
@@ -125487,6 +126600,7 @@ components:
             \ N>1 uses N as thread count."
           format: int64
           type: integer
+          x-int64: true
         pool:
           description: Backup all known guest systems included in the specified pool.
           type: string
@@ -125536,6 +126650,7 @@ components:
           format: int64
           minimum: 0
           type: integer
+          x-int64: true
         storage:
           description: Store resulting file to this storage.
           format: pve-storage-id
@@ -125556,6 +126671,7 @@ components:
             \ set to a value bigger than 0, N is used as thread count."
           format: int64
           type: integer
+          x-int64: true
     PoolsGetPoolsResponse_data_inner_members_inner:
       example:
         node: node
@@ -125575,6 +126691,7 @@ components:
         vmid:
           format: int64
           type: integer
+          x-int64: true
       required:
       - id
       - node

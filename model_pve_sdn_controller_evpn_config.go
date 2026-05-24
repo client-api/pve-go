@@ -22,6 +22,27 @@ var _ MappedNullable = &PveSdnControllerEvpnConfig{}
 // PveSdnControllerEvpnConfig struct for PveSdnControllerEvpnConfig
 type PveSdnControllerEvpnConfig struct {
 
+	// Whether to use eBGP or iBGP. Auto mode chooses depending on BGP controller or falls back to iBGP.
+	BgpMode *PveBgpModeEnum `json:"bgp-mode,omitempty"`
+
+	// The SDN controller object identifier.
+	Controller string `json:"controller" validate:"regexp=[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]"`
+
+	// the token for unlocking the global SDN configuration
+	LockToken *string `json:"lock-token,omitempty"`
+
+	// List of cluster node names.
+	Nodes *string `json:"nodes,omitempty"`
+
+	// Name of the peer group for this EVPN controller
+	PeerGroupName *string `json:"peer-group-name,omitempty" validate:"regexp=^[A-Za-z][A-Za-z0-9_]*$"`
+
+	// Route Map that should be applied for incoming routes
+	RouteMapIn *string `json:"route-map-in,omitempty"`
+
+	// Route Map that should be applied for outgoing routes
+	RouteMapOut *string `json:"route-map-out,omitempty"`
+
 	// autonomous system number
 	Asn int32 `json:"asn"`
 
@@ -41,8 +62,13 @@ type _PveSdnControllerEvpnConfig PveSdnControllerEvpnConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveSdnControllerEvpnConfig(asn int32, type_ string) *PveSdnControllerEvpnConfig {
+func NewPveSdnControllerEvpnConfig(controller string, asn int32, type_ string) *PveSdnControllerEvpnConfig {
 	this := PveSdnControllerEvpnConfig{}
+	var bgpMode PveBgpModeEnum = PVEBGPMODEENUM_AUTO
+	this.BgpMode = &bgpMode
+	this.Controller = controller
+	var peerGroupName string = "VTEP"
+	this.PeerGroupName = &peerGroupName
 	this.Asn = asn
 	this.Type = type_
 	return &this
@@ -54,11 +80,245 @@ func NewPveSdnControllerEvpnConfig(asn int32, type_ string) *PveSdnControllerEvp
 func NewPveSdnControllerEvpnConfigWithDefaults() *PveSdnControllerEvpnConfig {
 	this := PveSdnControllerEvpnConfig{}
 
+	var bgpMode PveBgpModeEnum = PVEBGPMODEENUM_AUTO
+	this.BgpMode = &bgpMode
+
+
+
+
+	var peerGroupName string = "VTEP"
+	this.PeerGroupName = &peerGroupName
+
+
+
 
 
 
 
 	return &this
+}
+
+
+// GetBgpMode returns the BgpMode field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetBgpMode() PveBgpModeEnum {
+	if o == nil || IsNil(o.BgpMode) {
+		var ret PveBgpModeEnum
+		return ret
+	}
+	return *o.BgpMode
+}
+
+// GetBgpModeOk returns a tuple with the BgpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetBgpModeOk() (*PveBgpModeEnum, bool) {
+	if o == nil || IsNil(o.BgpMode) {
+		return nil, false
+	}
+	return o.BgpMode, true
+}
+
+// HasBgpMode returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasBgpMode() bool {
+	if o != nil && !IsNil(o.BgpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetBgpMode gets a reference to the given PveBgpModeEnum and assigns it to the BgpMode field.
+func (o *PveSdnControllerEvpnConfig) SetBgpMode(v PveBgpModeEnum) {
+	o.BgpMode = &v
+}
+
+
+// GetController returns the Controller field value
+func (o *PveSdnControllerEvpnConfig) GetController() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Controller
+}
+
+// GetControllerOk returns a tuple with the Controller field value
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetControllerOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Controller, true
+}
+
+// SetController sets field value
+func (o *PveSdnControllerEvpnConfig) SetController(v string) {
+	o.Controller = v
+}
+
+
+// GetLockToken returns the LockToken field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetLockToken() string {
+	if o == nil || IsNil(o.LockToken) {
+		var ret string
+		return ret
+	}
+	return *o.LockToken
+}
+
+// GetLockTokenOk returns a tuple with the LockToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetLockTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.LockToken) {
+		return nil, false
+	}
+	return o.LockToken, true
+}
+
+// HasLockToken returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasLockToken() bool {
+	if o != nil && !IsNil(o.LockToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockToken gets a reference to the given string and assigns it to the LockToken field.
+func (o *PveSdnControllerEvpnConfig) SetLockToken(v string) {
+	o.LockToken = &v
+}
+
+
+// GetNodes returns the Nodes field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetNodes() string {
+	if o == nil || IsNil(o.Nodes) {
+		var ret string
+		return ret
+	}
+	return *o.Nodes
+}
+
+// GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetNodesOk() (*string, bool) {
+	if o == nil || IsNil(o.Nodes) {
+		return nil, false
+	}
+	return o.Nodes, true
+}
+
+// HasNodes returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasNodes() bool {
+	if o != nil && !IsNil(o.Nodes) {
+		return true
+	}
+
+	return false
+}
+
+// SetNodes gets a reference to the given string and assigns it to the Nodes field.
+func (o *PveSdnControllerEvpnConfig) SetNodes(v string) {
+	o.Nodes = &v
+}
+
+
+// GetPeerGroupName returns the PeerGroupName field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetPeerGroupName() string {
+	if o == nil || IsNil(o.PeerGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.PeerGroupName
+}
+
+// GetPeerGroupNameOk returns a tuple with the PeerGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetPeerGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PeerGroupName) {
+		return nil, false
+	}
+	return o.PeerGroupName, true
+}
+
+// HasPeerGroupName returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasPeerGroupName() bool {
+	if o != nil && !IsNil(o.PeerGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPeerGroupName gets a reference to the given string and assigns it to the PeerGroupName field.
+func (o *PveSdnControllerEvpnConfig) SetPeerGroupName(v string) {
+	o.PeerGroupName = &v
+}
+
+
+// GetRouteMapIn returns the RouteMapIn field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetRouteMapIn() string {
+	if o == nil || IsNil(o.RouteMapIn) {
+		var ret string
+		return ret
+	}
+	return *o.RouteMapIn
+}
+
+// GetRouteMapInOk returns a tuple with the RouteMapIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetRouteMapInOk() (*string, bool) {
+	if o == nil || IsNil(o.RouteMapIn) {
+		return nil, false
+	}
+	return o.RouteMapIn, true
+}
+
+// HasRouteMapIn returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasRouteMapIn() bool {
+	if o != nil && !IsNil(o.RouteMapIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRouteMapIn gets a reference to the given string and assigns it to the RouteMapIn field.
+func (o *PveSdnControllerEvpnConfig) SetRouteMapIn(v string) {
+	o.RouteMapIn = &v
+}
+
+
+// GetRouteMapOut returns the RouteMapOut field value if set, zero value otherwise.
+func (o *PveSdnControllerEvpnConfig) GetRouteMapOut() string {
+	if o == nil || IsNil(o.RouteMapOut) {
+		var ret string
+		return ret
+	}
+	return *o.RouteMapOut
+}
+
+// GetRouteMapOutOk returns a tuple with the RouteMapOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnControllerEvpnConfig) GetRouteMapOutOk() (*string, bool) {
+	if o == nil || IsNil(o.RouteMapOut) {
+		return nil, false
+	}
+	return o.RouteMapOut, true
+}
+
+// HasRouteMapOut returns a boolean if a field has been set.
+func (o *PveSdnControllerEvpnConfig) HasRouteMapOut() bool {
+	if o != nil && !IsNil(o.RouteMapOut) {
+		return true
+	}
+
+	return false
+}
+
+// SetRouteMapOut gets a reference to the given string and assigns it to the RouteMapOut field.
+func (o *PveSdnControllerEvpnConfig) SetRouteMapOut(v string) {
+	o.RouteMapOut = &v
 }
 
 
@@ -189,6 +449,32 @@ func (o PveSdnControllerEvpnConfig) MarshalJSON() ([]byte, error) {
 func (o PveSdnControllerEvpnConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.BgpMode) {
+		toSerialize["bgp-mode"] = o.BgpMode
+	}
+	
+	toSerialize["controller"] = o.Controller
+	
+	if !IsNil(o.LockToken) {
+		toSerialize["lock-token"] = o.LockToken
+	}
+	
+	if !IsNil(o.Nodes) {
+		toSerialize["nodes"] = o.Nodes
+	}
+	
+	if !IsNil(o.PeerGroupName) {
+		toSerialize["peer-group-name"] = o.PeerGroupName
+	}
+	
+	if !IsNil(o.RouteMapIn) {
+		toSerialize["route-map-in"] = o.RouteMapIn
+	}
+	
+	if !IsNil(o.RouteMapOut) {
+		toSerialize["route-map-out"] = o.RouteMapOut
+	}
+	
 	toSerialize["asn"] = o.Asn
 	
 	if !IsNil(o.Peers) {
@@ -209,6 +495,7 @@ func (o *PveSdnControllerEvpnConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"controller",
 		"asn",
 		"type",
 	}

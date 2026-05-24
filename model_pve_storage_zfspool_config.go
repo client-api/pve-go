@@ -22,6 +22,12 @@ var _ MappedNullable = &PveStorageZfspoolConfig{}
 // PveStorageZfspoolConfig struct for PveStorageZfspoolConfig
 type PveStorageZfspoolConfig struct {
 
+	// Authsupported.
+	Authsupported *string `json:"authsupported,omitempty"`
+
+	// The storage identifier.
+	Storage string `json:"storage" validate:"regexp=^[a-z][a-z0-9\\\\-_.]*[a-z0-9]$"`
+
 	// Pool.
 	Pool string `json:"pool"`
 
@@ -56,8 +62,9 @@ type _PveStorageZfspoolConfig PveStorageZfspoolConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveStorageZfspoolConfig(pool string, type_ string) *PveStorageZfspoolConfig {
+func NewPveStorageZfspoolConfig(storage string, pool string, type_ string) *PveStorageZfspoolConfig {
 	this := PveStorageZfspoolConfig{}
+	this.Storage = storage
 	this.Pool = pool
 	this.Type = type_
 	return &this
@@ -78,7 +85,67 @@ func NewPveStorageZfspoolConfigWithDefaults() *PveStorageZfspoolConfig {
 
 
 
+
+
 	return &this
+}
+
+
+// GetAuthsupported returns the Authsupported field value if set, zero value otherwise.
+func (o *PveStorageZfspoolConfig) GetAuthsupported() string {
+	if o == nil || IsNil(o.Authsupported) {
+		var ret string
+		return ret
+	}
+	return *o.Authsupported
+}
+
+// GetAuthsupportedOk returns a tuple with the Authsupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveStorageZfspoolConfig) GetAuthsupportedOk() (*string, bool) {
+	if o == nil || IsNil(o.Authsupported) {
+		return nil, false
+	}
+	return o.Authsupported, true
+}
+
+// HasAuthsupported returns a boolean if a field has been set.
+func (o *PveStorageZfspoolConfig) HasAuthsupported() bool {
+	if o != nil && !IsNil(o.Authsupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthsupported gets a reference to the given string and assigns it to the Authsupported field.
+func (o *PveStorageZfspoolConfig) SetAuthsupported(v string) {
+	o.Authsupported = &v
+}
+
+
+// GetStorage returns the Storage field value
+func (o *PveStorageZfspoolConfig) GetStorage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value
+// and a boolean to check if the value has been set.
+func (o *PveStorageZfspoolConfig) GetStorageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Storage, true
+}
+
+// SetStorage sets field value
+func (o *PveStorageZfspoolConfig) SetStorage(v string) {
+	o.Storage = v
 }
 
 
@@ -374,6 +441,12 @@ func (o PveStorageZfspoolConfig) MarshalJSON() ([]byte, error) {
 func (o PveStorageZfspoolConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.Authsupported) {
+		toSerialize["authsupported"] = o.Authsupported
+	}
+	
+	toSerialize["storage"] = o.Storage
+	
 	toSerialize["pool"] = o.Pool
 	
 	if !IsNil(o.Blocksize) {
@@ -414,6 +487,7 @@ func (o *PveStorageZfspoolConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"storage",
 		"pool",
 		"type",
 	}

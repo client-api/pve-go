@@ -22,6 +22,15 @@ var _ MappedNullable = &PveSdnZoneVlanConfig{}
 // PveSdnZoneVlanConfig struct for PveSdnZoneVlanConfig
 type PveSdnZoneVlanConfig struct {
 
+	// the token for unlocking the global SDN configuration
+	LockToken *string `json:"lock-token,omitempty"`
+
+	// Additional controllers.
+	SecondaryControllers []string `json:"secondary-controllers,omitempty"`
+
+	// The SDN zone object identifier.
+	Zone string `json:"zone" validate:"regexp=[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]"`
+
 	// List of cluster node names.
 	Nodes *string `json:"nodes,omitempty"`
 
@@ -56,8 +65,9 @@ type _PveSdnZoneVlanConfig PveSdnZoneVlanConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveSdnZoneVlanConfig(bridge string, type_ string) *PveSdnZoneVlanConfig {
+func NewPveSdnZoneVlanConfig(zone string, bridge string, type_ string) *PveSdnZoneVlanConfig {
 	this := PveSdnZoneVlanConfig{}
+	this.Zone = zone
 	this.Bridge = bridge
 	this.Type = type_
 	return &this
@@ -78,7 +88,101 @@ func NewPveSdnZoneVlanConfigWithDefaults() *PveSdnZoneVlanConfig {
 
 
 
+
+
+
 	return &this
+}
+
+
+// GetLockToken returns the LockToken field value if set, zero value otherwise.
+func (o *PveSdnZoneVlanConfig) GetLockToken() string {
+	if o == nil || IsNil(o.LockToken) {
+		var ret string
+		return ret
+	}
+	return *o.LockToken
+}
+
+// GetLockTokenOk returns a tuple with the LockToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnZoneVlanConfig) GetLockTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.LockToken) {
+		return nil, false
+	}
+	return o.LockToken, true
+}
+
+// HasLockToken returns a boolean if a field has been set.
+func (o *PveSdnZoneVlanConfig) HasLockToken() bool {
+	if o != nil && !IsNil(o.LockToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockToken gets a reference to the given string and assigns it to the LockToken field.
+func (o *PveSdnZoneVlanConfig) SetLockToken(v string) {
+	o.LockToken = &v
+}
+
+
+// GetSecondaryControllers returns the SecondaryControllers field value if set, zero value otherwise.
+func (o *PveSdnZoneVlanConfig) GetSecondaryControllers() []string {
+	if o == nil || IsNil(o.SecondaryControllers) {
+		var ret []string
+		return ret
+	}
+	return o.SecondaryControllers
+}
+
+// GetSecondaryControllersOk returns a tuple with the SecondaryControllers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveSdnZoneVlanConfig) GetSecondaryControllersOk() ([]string, bool) {
+	if o == nil || IsNil(o.SecondaryControllers) {
+		return nil, false
+	}
+	return o.SecondaryControllers, true
+}
+
+// HasSecondaryControllers returns a boolean if a field has been set.
+func (o *PveSdnZoneVlanConfig) HasSecondaryControllers() bool {
+	if o != nil && !IsNil(o.SecondaryControllers) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecondaryControllers gets a reference to the given []string and assigns it to the SecondaryControllers field.
+func (o *PveSdnZoneVlanConfig) SetSecondaryControllers(v []string) {
+	o.SecondaryControllers = v
+}
+
+
+// GetZone returns the Zone field value
+func (o *PveSdnZoneVlanConfig) GetZone() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Zone
+}
+
+// GetZoneOk returns a tuple with the Zone field value
+// and a boolean to check if the value has been set.
+func (o *PveSdnZoneVlanConfig) GetZoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Zone, true
+}
+
+// SetZone sets field value
+func (o *PveSdnZoneVlanConfig) SetZone(v string) {
+	o.Zone = v
 }
 
 
@@ -374,6 +478,16 @@ func (o PveSdnZoneVlanConfig) MarshalJSON() ([]byte, error) {
 func (o PveSdnZoneVlanConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.LockToken) {
+		toSerialize["lock-token"] = o.LockToken
+	}
+	
+	if !IsNil(o.SecondaryControllers) {
+		toSerialize["secondary-controllers"] = o.SecondaryControllers
+	}
+	
+	toSerialize["zone"] = o.Zone
+	
 	if !IsNil(o.Nodes) {
 		toSerialize["nodes"] = o.Nodes
 	}
@@ -414,6 +528,7 @@ func (o *PveSdnZoneVlanConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"zone",
 		"bridge",
 		"type",
 	}

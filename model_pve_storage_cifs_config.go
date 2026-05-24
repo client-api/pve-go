@@ -22,6 +22,12 @@ var _ MappedNullable = &PveStorageCifsConfig{}
 // PveStorageCifsConfig struct for PveStorageCifsConfig
 type PveStorageCifsConfig struct {
 
+	// Authsupported.
+	Authsupported *string `json:"authsupported,omitempty"`
+
+	// The storage identifier.
+	Storage string `json:"storage" validate:"regexp=^[a-z][a-z0-9\\\\-_.]*[a-z0-9]$"`
+
 	// File system path.
 	Path string `json:"path"`
 
@@ -98,8 +104,9 @@ type _PveStorageCifsConfig PveStorageCifsConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveStorageCifsConfig(path string, server string, share string, type_ string) *PveStorageCifsConfig {
+func NewPveStorageCifsConfig(storage string, path string, server string, share string, type_ string) *PveStorageCifsConfig {
 	this := PveStorageCifsConfig{}
+	this.Storage = storage
 	this.Path = path
 	this.Server = server
 	this.Share = share
@@ -139,6 +146,8 @@ func NewPveStorageCifsConfigWithDefaults() *PveStorageCifsConfig {
 
 
 
+
+
 	var smbversion PveSmbversionEnum = PVESMBVERSIONENUM_DEFAULT
 	this.Smbversion = &smbversion
 
@@ -161,6 +170,64 @@ func NewPveStorageCifsConfigWithDefaults() *PveStorageCifsConfig {
 
 
 	return &this
+}
+
+
+// GetAuthsupported returns the Authsupported field value if set, zero value otherwise.
+func (o *PveStorageCifsConfig) GetAuthsupported() string {
+	if o == nil || IsNil(o.Authsupported) {
+		var ret string
+		return ret
+	}
+	return *o.Authsupported
+}
+
+// GetAuthsupportedOk returns a tuple with the Authsupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveStorageCifsConfig) GetAuthsupportedOk() (*string, bool) {
+	if o == nil || IsNil(o.Authsupported) {
+		return nil, false
+	}
+	return o.Authsupported, true
+}
+
+// HasAuthsupported returns a boolean if a field has been set.
+func (o *PveStorageCifsConfig) HasAuthsupported() bool {
+	if o != nil && !IsNil(o.Authsupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthsupported gets a reference to the given string and assigns it to the Authsupported field.
+func (o *PveStorageCifsConfig) SetAuthsupported(v string) {
+	o.Authsupported = &v
+}
+
+
+// GetStorage returns the Storage field value
+func (o *PveStorageCifsConfig) GetStorage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value
+// and a boolean to check if the value has been set.
+func (o *PveStorageCifsConfig) GetStorageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Storage, true
+}
+
+// SetStorage sets field value
+func (o *PveStorageCifsConfig) SetStorage(v string) {
+	o.Storage = v
 }
 
 
@@ -902,6 +969,12 @@ func (o PveStorageCifsConfig) MarshalJSON() ([]byte, error) {
 func (o PveStorageCifsConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.Authsupported) {
+		toSerialize["authsupported"] = o.Authsupported
+	}
+	
+	toSerialize["storage"] = o.Storage
+	
 	toSerialize["path"] = o.Path
 	
 	if !IsNil(o.ContentDirs) {
@@ -994,6 +1067,7 @@ func (o *PveStorageCifsConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"storage",
 		"path",
 		"server",
 		"share",

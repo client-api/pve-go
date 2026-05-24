@@ -584,7 +584,15 @@ func (c *consoleConnector) connect(ctx context.Context, client *APIClient, targe
 	// after the upgrade is complete, so the connection is open here —
 	// push the auth inline before handing the conn over.
 	if c.needsInbandAuth {
-		if err := conn.WriteMessage(gws.TextMessage, []byte(fmt.Sprintf("%s:%s\n", ticket.User, ticket.Ticket))); err != nil {
+		// Some products (PDM) reject the bare user form on the WS handshake
+		// and require `<user>@<realm>`. defaultRealm is product-defined; PVE
+		// leaves it empty so the ticket-issued user passes through.
+		user := ticket.User
+		const defaultRealm = ""
+		if defaultRealm != "" && !strings.Contains(user, "@") {
+			user = user + "@" + defaultRealm
+		}
+		if err := conn.WriteMessage(gws.TextMessage, []byte(fmt.Sprintf("%s:%s\n", user, ticket.Ticket))); err != nil {
 			conn.Close()
 			return nil, ConsoleTicket{}, fmt.Errorf("send inband auth: %w", err)
 		}

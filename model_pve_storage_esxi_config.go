@@ -22,6 +22,12 @@ var _ MappedNullable = &PveStorageEsxiConfig{}
 // PveStorageEsxiConfig struct for PveStorageEsxiConfig
 type PveStorageEsxiConfig struct {
 
+	// Authsupported.
+	Authsupported *string `json:"authsupported,omitempty"`
+
+	// The storage identifier.
+	Storage string `json:"storage" validate:"regexp=^[a-z][a-z0-9\\\\-_.]*[a-z0-9]$"`
+
 	// List of nodes for which the storage configuration applies.
 	Nodes *string `json:"nodes,omitempty"`
 
@@ -59,8 +65,9 @@ type _PveStorageEsxiConfig PveStorageEsxiConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveStorageEsxiConfig(server string, username string, type_ string) *PveStorageEsxiConfig {
+func NewPveStorageEsxiConfig(storage string, server string, username string, type_ string) *PveStorageEsxiConfig {
 	this := PveStorageEsxiConfig{}
+	this.Storage = storage
 	this.Server = server
 	this.Username = username
 	var skipCertVerification PveBoolean = PVEBOOLEAN__0
@@ -82,12 +89,72 @@ func NewPveStorageEsxiConfigWithDefaults() *PveStorageEsxiConfig {
 
 
 
+
+
 	var skipCertVerification PveBoolean = PVEBOOLEAN__0
 	this.SkipCertVerification = &skipCertVerification
 
 
 
 	return &this
+}
+
+
+// GetAuthsupported returns the Authsupported field value if set, zero value otherwise.
+func (o *PveStorageEsxiConfig) GetAuthsupported() string {
+	if o == nil || IsNil(o.Authsupported) {
+		var ret string
+		return ret
+	}
+	return *o.Authsupported
+}
+
+// GetAuthsupportedOk returns a tuple with the Authsupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveStorageEsxiConfig) GetAuthsupportedOk() (*string, bool) {
+	if o == nil || IsNil(o.Authsupported) {
+		return nil, false
+	}
+	return o.Authsupported, true
+}
+
+// HasAuthsupported returns a boolean if a field has been set.
+func (o *PveStorageEsxiConfig) HasAuthsupported() bool {
+	if o != nil && !IsNil(o.Authsupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthsupported gets a reference to the given string and assigns it to the Authsupported field.
+func (o *PveStorageEsxiConfig) SetAuthsupported(v string) {
+	o.Authsupported = &v
+}
+
+
+// GetStorage returns the Storage field value
+func (o *PveStorageEsxiConfig) GetStorage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value
+// and a boolean to check if the value has been set.
+func (o *PveStorageEsxiConfig) GetStorageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Storage, true
+}
+
+// SetStorage sets field value
+func (o *PveStorageEsxiConfig) SetStorage(v string) {
+	o.Storage = v
 }
 
 
@@ -408,6 +475,12 @@ func (o PveStorageEsxiConfig) MarshalJSON() ([]byte, error) {
 func (o PveStorageEsxiConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.Authsupported) {
+		toSerialize["authsupported"] = o.Authsupported
+	}
+	
+	toSerialize["storage"] = o.Storage
+	
 	if !IsNil(o.Nodes) {
 		toSerialize["nodes"] = o.Nodes
 	}
@@ -450,6 +523,7 @@ func (o *PveStorageEsxiConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"storage",
 		"server",
 		"username",
 		"type",

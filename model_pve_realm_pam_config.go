@@ -22,6 +22,15 @@ var _ MappedNullable = &PveRealmPamConfig{}
 // PveRealmPamConfig struct for PveRealmPamConfig
 type PveRealmPamConfig struct {
 
+	// A list of audiences that the OpenID Issuer may include that are accepted in addition to 'client-id'.
+	Audiences *string `json:"audiences,omitempty" validate:"regexp=^[^\\\\x00-\\\\x1F\\\\x7F <>#\\\\u0022]*$"`
+
+	// Check bind connection to the server.
+	CheckConnection *PveBoolean `json:"check-connection,omitempty"`
+
+	// Authentication domain ID
+	Realm string `json:"realm" validate:"regexp=^[A-Za-z][A-Za-z0-9.\\\\-_]+$"`
+
 	// Use this as default realm
 	Default *PveBoolean `json:"default,omitempty"`
 
@@ -41,8 +50,11 @@ type _PveRealmPamConfig PveRealmPamConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPveRealmPamConfig(type_ string) *PveRealmPamConfig {
+func NewPveRealmPamConfig(realm string, type_ string) *PveRealmPamConfig {
 	this := PveRealmPamConfig{}
+	var checkConnection PveBoolean = PVEBOOLEAN__0
+	this.CheckConnection = &checkConnection
+	this.Realm = realm
 	this.Type = type_
 	return &this
 }
@@ -54,10 +66,106 @@ func NewPveRealmPamConfigWithDefaults() *PveRealmPamConfig {
 	this := PveRealmPamConfig{}
 
 
+	var checkConnection PveBoolean = PVEBOOLEAN__0
+	this.CheckConnection = &checkConnection
+
+
+
 
 
 
 	return &this
+}
+
+
+// GetAudiences returns the Audiences field value if set, zero value otherwise.
+func (o *PveRealmPamConfig) GetAudiences() string {
+	if o == nil || IsNil(o.Audiences) {
+		var ret string
+		return ret
+	}
+	return *o.Audiences
+}
+
+// GetAudiencesOk returns a tuple with the Audiences field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveRealmPamConfig) GetAudiencesOk() (*string, bool) {
+	if o == nil || IsNil(o.Audiences) {
+		return nil, false
+	}
+	return o.Audiences, true
+}
+
+// HasAudiences returns a boolean if a field has been set.
+func (o *PveRealmPamConfig) HasAudiences() bool {
+	if o != nil && !IsNil(o.Audiences) {
+		return true
+	}
+
+	return false
+}
+
+// SetAudiences gets a reference to the given string and assigns it to the Audiences field.
+func (o *PveRealmPamConfig) SetAudiences(v string) {
+	o.Audiences = &v
+}
+
+
+// GetCheckConnection returns the CheckConnection field value if set, zero value otherwise.
+func (o *PveRealmPamConfig) GetCheckConnection() PveBoolean {
+	if o == nil || IsNil(o.CheckConnection) {
+		var ret PveBoolean
+		return ret
+	}
+	return *o.CheckConnection
+}
+
+// GetCheckConnectionOk returns a tuple with the CheckConnection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PveRealmPamConfig) GetCheckConnectionOk() (*PveBoolean, bool) {
+	if o == nil || IsNil(o.CheckConnection) {
+		return nil, false
+	}
+	return o.CheckConnection, true
+}
+
+// HasCheckConnection returns a boolean if a field has been set.
+func (o *PveRealmPamConfig) HasCheckConnection() bool {
+	if o != nil && !IsNil(o.CheckConnection) {
+		return true
+	}
+
+	return false
+}
+
+// SetCheckConnection gets a reference to the given PveBoolean and assigns it to the CheckConnection field.
+func (o *PveRealmPamConfig) SetCheckConnection(v PveBoolean) {
+	o.CheckConnection = &v
+}
+
+
+// GetRealm returns the Realm field value
+func (o *PveRealmPamConfig) GetRealm() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Realm
+}
+
+// GetRealmOk returns a tuple with the Realm field value
+// and a boolean to check if the value has been set.
+func (o *PveRealmPamConfig) GetRealmOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Realm, true
+}
+
+// SetRealm sets field value
+func (o *PveRealmPamConfig) SetRealm(v string) {
+	o.Realm = v
 }
 
 
@@ -196,6 +304,16 @@ func (o PveRealmPamConfig) MarshalJSON() ([]byte, error) {
 func (o PveRealmPamConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	
+	if !IsNil(o.Audiences) {
+		toSerialize["audiences"] = o.Audiences
+	}
+	
+	if !IsNil(o.CheckConnection) {
+		toSerialize["check-connection"] = o.CheckConnection
+	}
+	
+	toSerialize["realm"] = o.Realm
+	
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
@@ -218,6 +336,7 @@ func (o *PveRealmPamConfig) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"realm",
 		"type",
 	}
 
